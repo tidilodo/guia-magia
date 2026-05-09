@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Ar: A Voz que Manifesta — Guilda da Fonte</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --preto: #0a0608;
+  --medio: #1a1015;
+  --caixa: #1e1519;
+  --borda: #2e2028;
+  --dourado: #c9913a;
+  --dourado2: #e8b96a;
+  --creme: #f5ede0;
+  --texto: #d4c4b0;
+  --suave: #8a7a6a;
+  --elem: #a08cc8;
+  --elem2: #c0aae0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #2a2a2a;
+  font-family: 'EB Garamond', Georgia, serif;
+  color: var(--texto);
+}
+
+.pagina {
+  width: 210mm;
+  min-height: 297mm;
+  background: var(--preto);
+  margin: 0 auto 24px;
+  padding: 20mm 18mm 20mm 22mm;
+  position: relative;
+  border-left: 3px solid var(--elem);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+  page-break-after: always;
+}
+
+.pagina:last-child { page-break-after: auto; }
+
+/* ── CAPA ── */
+.capa {
+  border-left: none;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, #100c1a 0%, #0a0608 60%);
+  padding: 24mm 18mm;
+}
+.capa::before {
+  content: '';
+  position: absolute; inset: 0;
+  border: 2px solid rgba(160,140,200,0.2);
+  margin: 12mm;
+  pointer-events: none;
+}
+.capa-ornamento { font-size: 10pt; letter-spacing: 12px; color: var(--elem); margin-bottom: 20mm; opacity: 0.6; }
+.capa-simbolo { font-size: 52pt; margin-bottom: 8mm; line-height: 1; }
+.capa-num { font-family: 'Cinzel', serif; font-size: 8pt; letter-spacing: 6px; text-transform: uppercase; color: var(--elem); margin-bottom: 6mm; }
+.capa-titulo { font-family: 'Cinzel Decorative', serif; font-size: 28pt; font-weight: 700; color: var(--creme); line-height: 1.2; margin-bottom: 4mm; }
+.capa-sub { font-family: 'Cinzel Decorative', serif; font-size: 14pt; font-weight: 400; color: var(--elem2); margin-bottom: 16mm; }
+.capa-divider { width: 60mm; height: 1px; background: linear-gradient(90deg, transparent, var(--elem), transparent); margin: 0 auto 16mm; }
+.capa-serie { font-family: 'Cinzel', serif; font-size: 8pt; letter-spacing: 3px; text-transform: uppercase; color: var(--suave); margin-bottom: 4mm; }
+.capa-marca { font-family: 'Cinzel Decorative', serif; font-size: 11pt; color: var(--dourado2); }
+.capa-rodape { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 3px; color: var(--suave); text-transform: uppercase; }
+
+/* ── CABEÇALHO INTERNO ── */
+.cab { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10mm; padding-bottom: 3mm; border-bottom: 1px solid var(--borda); }
+.cab-marca { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 3px; text-transform: uppercase; color: var(--suave); }
+.cab-elem { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 2px; color: var(--elem); text-transform: uppercase; }
+
+/* ── TIPOGRAFIA ── */
+h1 { font-family: 'Cinzel Decorative', serif; font-size: 20pt; font-weight: 700; color: var(--creme); line-height: 1.3; margin-bottom: 6mm; margin-top: 8mm; }
+h2 { font-family: 'Cinzel Decorative', serif; font-size: 14pt; font-weight: 400; color: var(--elem2); line-height: 1.4; margin-bottom: 4mm; margin-top: 8mm; padding-bottom: 2mm; border-bottom: 1px solid rgba(160,140,200,0.2); }
+h3 { font-family: 'Cinzel', serif; font-size: 10pt; font-weight: 600; color: var(--elem); margin-bottom: 3mm; margin-top: 6mm; letter-spacing: 1px; }
+p { font-size: 10.5pt; line-height: 1.75; margin-bottom: 3.5mm; color: var(--texto); }
+strong { color: var(--creme); font-weight: 500; }
+em { color: var(--dourado2); font-style: italic; }
+ul, ol { padding-left: 6mm; margin-bottom: 4mm; }
+li { font-size: 10.5pt; line-height: 1.7; margin-bottom: 1.5mm; color: var(--texto); }
+li strong { color: var(--elem2); }
+
+/* ── COMPONENTES ── */
+.citacao {
+  background: var(--caixa); border-left: 3px solid var(--elem);
+  padding: 5mm 6mm; margin: 5mm 0; border-radius: 2px;
+  font-style: italic; font-size: 10pt; color: var(--dourado2); line-height: 1.7;
+}
+.caixa-destaque {
+  background: var(--caixa); border: 1px solid var(--borda);
+  border-top: 2px solid var(--elem); padding: 5mm 6mm;
+  margin: 5mm 0; border-radius: 2px;
+}
+.caixa-destaque p { margin-bottom: 2mm; }
+.divisor { text-align: center; color: var(--elem); font-size: 9pt; letter-spacing: 8px; margin: 6mm 0; opacity: 0.5; }
+.ornamento { text-align: center; color: var(--dourado); font-size: 10pt; letter-spacing: 6px; margin: 6mm 0; opacity: 0.4; }
+
+/* ── MANTRA ── */
+.pagina-mantra {
+  border-left: none;
+  background: var(--medio);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 24mm 22mm;
+}
+.pagina-mantra::before {
+  content: '';
+  position: absolute; inset: 10mm;
+  border: 1px solid rgba(160,140,200,0.25);
+  pointer-events: none;
+}
+.mantra-label { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 5px; text-transform: uppercase; color: var(--elem); margin-bottom: 10mm; }
+.mantra-titulo { font-family: 'Cinzel Decorative', serif; font-size: 16pt; color: var(--creme); margin-bottom: 10mm; font-weight: 400; }
+.mantra-ornamento { font-size: 9pt; letter-spacing: 8px; color: var(--elem); margin-bottom: 8mm; opacity: 0.5; }
+.mantra-texto { font-family: 'EB Garamond', serif; font-size: 13pt; line-height: 2; color: var(--texto); font-style: italic; margin-bottom: 8mm; }
+.mantra-fecho { font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: 2px; color: var(--dourado2); margin-top: 4mm; }
+.mantra-instrucoes { margin-top: 10mm; padding-top: 8mm; border-top: 1px solid var(--borda); max-width: 130mm; }
+.mantra-instrucoes p { font-size: 9.5pt; color: var(--suave); line-height: 1.7; }
+
+/* ── ENCERRAMENTO ── */
+.pagina-enc {
+  border-left: none;
+  background: linear-gradient(160deg, #100c1a 0%, #0a0608 60%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 24mm;
+}
+.pagina-enc::before {
+  content: '';
+  position: absolute; inset: 12mm;
+  border: 1px solid rgba(160,140,200,0.15);
+  pointer-events: none;
+}
+.enc-simbolo { font-size: 36pt; margin-bottom: 8mm; }
+.enc-titulo { font-family: 'Cinzel Decorative', serif; font-size: 16pt; color: var(--creme); font-weight: 400; margin-bottom: 6mm; line-height: 1.4; }
+.enc-texto { font-size: 10.5pt; color: var(--texto); line-height: 1.8; max-width: 130mm; margin-bottom: 10mm; }
+.enc-frase { font-family: 'Cinzel', serif; font-size: 9pt; color: var(--elem2); font-style: italic; letter-spacing: 1px; margin-bottom: 12mm; }
+.enc-divider { width: 40mm; height: 1px; background: linear-gradient(90deg, transparent, var(--elem), transparent); margin: 0 auto 10mm; }
+.enc-marca { font-family: 'Cinzel Decorative', serif; font-size: 11pt; color: var(--dourado2); margin-bottom: 4mm; }
+.enc-wpp { font-family: 'Cinzel', serif; font-size: 8pt; color: var(--suave); letter-spacing: 1px; }
+
+/* ── RODAPÉ ── */
+.rodape { position: absolute; bottom: 10mm; left: 22mm; right: 18mm; display: flex; justify-content: space-between; align-items: center; }
+.rodape-marca { font-family: 'Cinzel', serif; font-size: 6.5pt; letter-spacing: 2px; color: var(--suave); text-transform: uppercase; }
+.rodape-num { font-family: 'Cinzel', serif; font-size: 6.5pt; color: var(--elem); }
+
+/* ── PRINT ── */
+@media print {
+  body { background: none; }
+  .pagina { margin: 0; box-shadow: none; }
+  .btn-imprimir { display: none; }
+}
+
+/* ── BOTÃO ── */
+.btn-imprimir {
+  position: fixed; top: 20px; right: 20px;
+  background: #a08cc8; color: white; border: none;
+  padding: 12px 24px; border-radius: 4px; cursor: pointer;
+  font-family: sans-serif; font-size: 14px; font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 999;
+}
+</style>
+</head>
+<body>
+<button class="btn-imprimir" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+
+<!-- CAPA -->
+<div class="pagina capa">
+  <p class="capa-ornamento">◆ &nbsp; ◆ &nbsp; ◆</p>
+  <div class="capa-simbolo">🌬</div>
+  <p class="capa-num">PDF 04</p>
+  <h1 class="capa-titulo">Ar</h1>
+  <p class="capa-sub">A Voz que Manifesta</p>
+  <div class="capa-divider"></div>
+  <p class="capa-serie">Guia de Magia Atual · Box dos 4 Elementos</p>
+  <p class="capa-marca">Guilda da Fonte</p>
+  <p class="capa-rodape">Conhecimento ancestral para a vida urbana</p>
+</div>
+
+<!-- INTRODUÇÃO E FILOSOFIA -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌬 Ar — A Voz que Manifesta</span></div>
+  <div class="citacao">"Antes de qualquer coisa existir no mundo material, ela existiu como pensamento. O Ar foi a primeira linguagem."</div>
+  <h2>Introdução: O Ar Mora em Você</h2>
+  <p>Você está respirando agora. Provavelmente não percebeu isso até ler esta frase. Isso é o Ar: onipresente, invisível, absolutamente fundamental, completamente ignorado.</p>
+  <p>O elemento Ar é o mais esquecido nas práticas mágicas urbanas — talvez porque seja o mais difícil de ver, de segurar, de ter certeza que está lá. Mas quando você aprende a trabalhar com o Ar, descobre que nunca esteve sozinha. Que a respiração é o portal mais acessível para estados alterados de consciência. Que sua voz é um instrumento de poder que você usa mal ou subutiliza todos os dias.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>A Filosofia do Ar na Magia</h2>
+  <h3>O Ar nas Tradições do Mundo</h3>
+  <p>Mercúrio/Hermes, mensageiro dos deuses — o Ar como comunicação entre mundos. Oxóssi e os ventos da caça. As Sílfides da tradição ocidental. Os Apsaras hindus. O Ruah (sopro/espírito) hebraico. Em todas as tradições: o Ar é o elemento do início — <strong>o sopro que inicia a vida</strong>.</p>
+  <h3>As Qualidades do Ar</h3>
+  <ul>
+    <li><strong>Comunicação</strong> — a palavra, o nome, o verbo como ato de poder</li>
+    <li><strong>Pensamento</strong> — a mente que analisa, conecta, cria padrões</li>
+    <li><strong>Criatividade</strong> — a inspiração que chega como brisa inesperada</li>
+    <li><strong>Perspectiva</strong> — a capacidade de ver de cima, de afastar-se para enxergar melhor</li>
+    <li><strong>Aprendizado</strong> — a curiosidade que voa de flor em flor</li>
+    <li><strong>Leveza e mudança</strong> — o Ar não se prende; transforma-se e move-se constantemente</li>
+    <li><strong>A voz como feitiço</strong> — tudo que você nomeia, você convoca</li>
+  </ul>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">2</span></div>
+</div>
+
+<!-- O PODER DA VOZ E RESPIRAÇÃO MÁGICA -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌬 Ar — A Voz que Manifesta</span></div>
+  <h2>O Poder da Voz</h2>
+  <p>Falar suas intenções em voz alta muda a realidade. Não é metáfora. Quando você pensa algo, a intenção existe apenas como padrão elétrico no cérebro. Quando você fala, você converte esse padrão em onda sonora — algo que existe fisicamente no mundo.</p>
+  <p>O som vibra o ar. O ar toca tudo ao redor. Você literalmente faz sua intenção tocar a realidade. É por isso que todas as tradições mágicas têm palavras de poder, mantras, orações faladas em voz alta.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>Técnica de Respiração Mágica</h2>
+  <p><em>10 minutos — adaptação de pranayama com intenção mágica específica</em></p>
+  <div class="caixa-destaque">
+    <h3 style="margin-top:0">Fase 1 — Limpeza (3 min)</h3>
+    <p>Sente-se com a coluna ereta. Respire pela boca, rápido e ritmado — uma respiração por segundo. Isso limpa o campo energético e oxigena o sangue. Se sentir tontura leve, é normal — diminua o ritmo.</p>
+  </div>
+  <div class="caixa-destaque">
+    <h3 style="margin-top:0">Fase 2 — Intenção (4 min)</h3>
+    <p>Mude para respiração lenta: inspire em 4 tempos, segure em 4, expire em 4, segure em 4. A cada inspiração, visualize sua intenção entrando em você como luz. A cada expiração, visualize resistências saindo.</p>
+  </div>
+  <div class="caixa-destaque">
+    <h3 style="margin-top:0">Fase 3 — Integração (3 min)</h3>
+    <p>Respire naturalmente. Permaneça em silêncio. Observe a diferença no seu corpo e na qualidade dos seus pensamentos.</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">3</span></div>
+</div>
+
+<!-- RITUAL DO INCENSO E ESCRITA PARA O VENTO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌬 Ar — A Voz que Manifesta</span></div>
+  <h2>Ritual do Incenso para Limpar e Abrir Caminhos</h2>
+  <div class="caixa-destaque">
+    <h3 style="margin-top:0">O que você vai precisar:</h3>
+    <p>1 incenso do seu aroma favorito. Sugestões: sândalo para limpeza, lavanda para paz, canela para atração, benjoim para prosperidade.</p>
+  </div>
+  <h3>Como fazer:</h3>
+  <p>Acenda o incenso. Começando pelo canto mais distante do seu apartamento, caminhe pelos ambientes em sentido horário, levando a fumaça para cada canto e borda.</p>
+  <p>Enquanto caminha, diga: <em>"Que tudo que não serve seja transformado. Que tudo que é bom permaneça. Que os caminhos se abram."</em></p>
+  <p>Feche na porta de entrada, direcionando a fumaça para fora como gesto simbólico de varrer o que não pertence ao seu espaço.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>Como Escrever seus Desejos para o Vento</h2>
+  <p>Escreva seu desejo em um papel pequeno. Seja específica. Vá até uma janela aberta ou varanda. Segure o papel e leia em voz alta. Depois rasgue em pequenos pedaços e jogue pelo vento.</p>
+  <p>Se não puder jogar ao vento (sem criar lixo urbano), você pode:</p>
+  <ul>
+    <li><strong>Queimar</strong> — o Fogo leva para o Ar pela fumaça</li>
+    <li><strong>Guardar num lugar alto</strong> — prateleira acima dos olhos; simbolicamente "elevado"</li>
+  </ul>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">4</span></div>
+</div>
+
+<!-- MANTRA -->
+<div class="pagina pagina-mantra">
+  <p class="mantra-label">✦ &nbsp; Mantra do Ar &nbsp; ✦</p>
+  <h2 class="mantra-titulo">A Voz que Manifesta</h2>
+  <div class="mantra-ornamento">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <p class="mantra-texto">
+    Eu sou ar que carrega e que manifesta,<br>
+    palavra que cria antes de existir.<br>
+    Sou o vento que move o que está parado,<br>
+    a voz que desperta o que quer vir.<br><br>
+    Meu pensamento é semente de realidade,<br>
+    minha fala, o feitiço mais honesto.<br>
+    Sou leveza com raiz, clareza com profundidade —<br>
+    e no ar, encontro meu propósito.<br><br>
+    Pelo ar que há em mim,<br>
+    pelo ar que há em tudo,<br>
+    minha manifestação começa aqui —<br>
+    no verbo claro e agudo.
+  </p>
+  <p class="mantra-fecho">Ar, ar, ar em mim.<br>Que assim seja. Que assim é.</p>
+  <div class="mantra-instrucoes">
+    <p>Repita em voz alta — especialmente em voz alta, o Ar pede sonoridade. Use antes de apresentações, conversas difíceis, ou qualquer momento em que precise de clareza e comunicação poderosa.</p>
+  </div>
+  <div class="rodape" style="left:22mm;right:18mm"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">5</span></div>
+</div>
+
+<!-- ROTINA MATINAL E ENCERRAMENTO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌬 Ar — A Voz que Manifesta</span></div>
+  <h2>Rotina Matinal de Manifestação Vocal</h2>
+  <p><em>5 minutos — faça antes do café, ainda no quarto</em></p>
+  <ol>
+    <li>Abra a janela, respire o ar da manhã 3 vezes conscientes.</li>
+    <li>Diga em voz alta: <em>"Bom dia, [seu nome]. Hoje eu escolho [uma palavra — ex: clareza, coragem, flow]."</em></li>
+    <li>Fale sua intenção principal do dia em voz alta, no presente: <em>"Hoje eu [ação concreta que você vai fazer]."</em></li>
+    <li>Diga o Mantra do Ar completo ou apenas as duas últimas linhas.</li>
+    <li>Feche com: <em>"O dia está aberto. Eu estou pronta."</em></li>
+  </ol>
+  <p>Cinco minutos. Todos os dias. Em 30 dias, você vai sentir a diferença na qualidade das suas comunicações e na clareza das suas decisões.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>O Símbolo do Ar</h2>
+  <h3>Triângulo Apontado para Cima com Linha Horizontal △̶</h3>
+  <p>Representa o Ar como elemento ascendente mas com limite — o pensamento que se ancora, a leveza que tem raiz. Trace no ar antes de falar algo importante. Desenhe na capa do diário ou caderno de estudos.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>Para Lembrar</h2>
+  <div class="caixa-destaque">
+    <p>O Ar te lembra que você tem uma voz. Que seus pensamentos criam realidade. Que <strong>clareza é uma prática, não um dom</strong>. Que você pode mudar sua mente — e ao mudar sua mente, mudar seu mundo.</p>
+    <p>Honre seu Ar. Respire com intenção. Fale com poder.</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">6</span></div>
+</div>
+
+<!-- ENCERRAMENTO -->
+<div class="pagina pagina-enc">
+  <div class="enc-simbolo">🌬</div>
+  <h2 class="enc-titulo">Você é a Voz</h2>
+  <p class="enc-texto">A magia do Ar não está no incenso, não está nos rituais de respiração, não está nas palavras escritas no papel. Está em você. No momento em que você fala sua intenção em voz alta e o universo literalmente vibra com ela. Na sua clareza de pensamento que ilumina o que antes era névoa.</p>
+  <p class="enc-frase"><em>"Cada palavra que você fala com intenção<br>é um feitiço que toca a realidade antes de você."</em></p>
+  <div class="enc-divider"></div>
+  <p class="enc-texto">Respire fundo.<br>Fale com poder.<br>Deixe o ar carregar.</p>
+  <div class="enc-divider"></div>
+  <p class="enc-marca">Guilda da Fonte</p>
+  <p class="enc-wpp">Dúvidas? WhatsApp (62) 99203-8987</p>
+  <div class="rodape" style="left:24mm;right:24mm"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual · Box dos 4 Elementos</span><span class="rodape-num">7</span></div>
+</div>
+
+</body>
+</html>

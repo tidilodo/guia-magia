@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Fundamentos da Magia Atual — Guilda da Fonte</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --preto: #0a0608;
+  --medio: #1a1015;
+  --caixa: #1e1519;
+  --borda: #2e2028;
+  --dourado: #c9913a;
+  --dourado2: #e8b96a;
+  --creme: #f5ede0;
+  --texto: #d4c4b0;
+  --suave: #8a7a6a;
+  --elem: #c9913a;
+  --elem2: #e8b96a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #2a2a2a;
+  font-family: 'EB Garamond', Georgia, serif;
+  color: var(--texto);
+}
+
+.pagina {
+  width: 210mm;
+  min-height: 297mm;
+  background: var(--preto);
+  margin: 0 auto 24px;
+  padding: 20mm 18mm 20mm 22mm;
+  position: relative;
+  border-left: 3px solid var(--elem);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+  page-break-after: always;
+}
+
+.pagina:last-child { page-break-after: auto; }
+
+/* ── CAPA ── */
+.capa {
+  border-left: none;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, #1a1208 0%, #0a0608 60%);
+  padding: 24mm 18mm;
+}
+.capa::before {
+  content: '';
+  position: absolute; inset: 0;
+  border: 2px solid rgba(201,145,58,0.2);
+  margin: 12mm;
+  pointer-events: none;
+}
+.capa-ornamento { font-size: 10pt; letter-spacing: 12px; color: var(--elem); margin-bottom: 20mm; opacity: 0.6; }
+.capa-simbolo { font-size: 52pt; margin-bottom: 8mm; line-height: 1; }
+.capa-num { font-family: 'Cinzel', serif; font-size: 8pt; letter-spacing: 6px; text-transform: uppercase; color: var(--elem); margin-bottom: 6mm; }
+.capa-titulo { font-family: 'Cinzel Decorative', serif; font-size: 22pt; font-weight: 700; color: var(--creme); line-height: 1.2; margin-bottom: 4mm; }
+.capa-sub { font-family: 'Cinzel Decorative', serif; font-size: 14pt; font-weight: 400; color: var(--elem2); margin-bottom: 16mm; }
+.capa-divider { width: 60mm; height: 1px; background: linear-gradient(90deg, transparent, var(--elem), transparent); margin: 0 auto 16mm; }
+.capa-serie { font-family: 'Cinzel', serif; font-size: 8pt; letter-spacing: 3px; text-transform: uppercase; color: var(--suave); margin-bottom: 4mm; }
+.capa-marca { font-family: 'Cinzel Decorative', serif; font-size: 11pt; color: var(--dourado2); }
+.capa-rodape { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 3px; color: var(--suave); text-transform: uppercase; }
+
+/* ── CABEÇALHO INTERNO ── */
+.cab { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10mm; padding-bottom: 3mm; border-bottom: 1px solid var(--borda); }
+.cab-marca { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 3px; text-transform: uppercase; color: var(--suave); }
+.cab-elem { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 2px; color: var(--elem); text-transform: uppercase; }
+
+/* ── TIPOGRAFIA ── */
+h1 { font-family: 'Cinzel Decorative', serif; font-size: 20pt; font-weight: 700; color: var(--creme); line-height: 1.3; margin-bottom: 6mm; margin-top: 8mm; }
+h2 { font-family: 'Cinzel Decorative', serif; font-size: 14pt; font-weight: 400; color: var(--elem2); line-height: 1.4; margin-bottom: 4mm; margin-top: 8mm; padding-bottom: 2mm; border-bottom: 1px solid rgba(201,145,58,0.2); }
+h3 { font-family: 'Cinzel', serif; font-size: 10pt; font-weight: 600; color: var(--elem); margin-bottom: 3mm; margin-top: 6mm; letter-spacing: 1px; }
+p { font-size: 10.5pt; line-height: 1.75; margin-bottom: 3.5mm; color: var(--texto); }
+strong { color: var(--creme); font-weight: 500; }
+em { color: var(--dourado2); font-style: italic; }
+ul, ol { padding-left: 6mm; margin-bottom: 4mm; }
+li { font-size: 10.5pt; line-height: 1.7; margin-bottom: 1.5mm; color: var(--texto); }
+li strong { color: var(--elem2); }
+
+/* ── COMPONENTES ── */
+.citacao {
+  background: var(--caixa); border-left: 3px solid var(--elem);
+  padding: 5mm 6mm; margin: 5mm 0; border-radius: 2px;
+  font-style: italic; font-size: 10pt; color: var(--dourado2); line-height: 1.7;
+}
+.caixa-destaque {
+  background: var(--caixa); border: 1px solid var(--borda);
+  border-top: 2px solid var(--elem); padding: 5mm 6mm;
+  margin: 5mm 0; border-radius: 2px;
+}
+.caixa-destaque p { margin-bottom: 2mm; }
+.divisor { text-align: center; color: var(--elem); font-size: 9pt; letter-spacing: 8px; margin: 6mm 0; opacity: 0.5; }
+.ornamento { text-align: center; color: var(--dourado); font-size: 10pt; letter-spacing: 6px; margin: 6mm 0; opacity: 0.4; }
+
+/* ── MANTRA / PÁGINA ESPECIAL ── */
+.pagina-mantra {
+  border-left: none;
+  background: var(--medio);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 24mm 22mm;
+}
+.pagina-mantra::before {
+  content: '';
+  position: absolute; inset: 10mm;
+  border: 1px solid rgba(201,145,58,0.25);
+  pointer-events: none;
+}
+.mantra-label { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 5px; text-transform: uppercase; color: var(--elem); margin-bottom: 10mm; }
+.mantra-titulo { font-family: 'Cinzel Decorative', serif; font-size: 16pt; color: var(--creme); margin-bottom: 10mm; font-weight: 400; }
+.mantra-ornamento { font-size: 9pt; letter-spacing: 8px; color: var(--elem); margin-bottom: 8mm; opacity: 0.5; }
+.mantra-texto { font-family: 'EB Garamond', serif; font-size: 13pt; line-height: 2; color: var(--texto); font-style: italic; margin-bottom: 8mm; }
+.mantra-fecho { font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: 2px; color: var(--dourado2); margin-top: 4mm; }
+.mantra-instrucoes { margin-top: 10mm; padding-top: 8mm; border-top: 1px solid var(--borda); max-width: 130mm; }
+.mantra-instrucoes p { font-size: 9.5pt; color: var(--suave); line-height: 1.7; }
+
+/* ── ENCERRAMENTO ── */
+.pagina-enc {
+  border-left: none;
+  background: linear-gradient(160deg, #1a1208 0%, #0a0608 60%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 24mm;
+}
+.pagina-enc::before {
+  content: '';
+  position: absolute; inset: 12mm;
+  border: 1px solid rgba(201,145,58,0.15);
+  pointer-events: none;
+}
+.enc-simbolo { font-size: 36pt; margin-bottom: 8mm; }
+.enc-titulo { font-family: 'Cinzel Decorative', serif; font-size: 16pt; color: var(--creme); font-weight: 400; margin-bottom: 6mm; line-height: 1.4; }
+.enc-texto { font-size: 10.5pt; color: var(--texto); line-height: 1.8; max-width: 130mm; margin-bottom: 10mm; }
+.enc-frase { font-family: 'Cinzel', serif; font-size: 9pt; color: var(--elem2); font-style: italic; letter-spacing: 1px; margin-bottom: 12mm; }
+.enc-divider { width: 40mm; height: 1px; background: linear-gradient(90deg, transparent, var(--elem), transparent); margin: 0 auto 10mm; }
+.enc-marca { font-family: 'Cinzel Decorative', serif; font-size: 11pt; color: var(--dourado2); margin-bottom: 4mm; }
+.enc-wpp { font-family: 'Cinzel', serif; font-size: 8pt; color: var(--suave); letter-spacing: 1px; }
+
+/* ── RODAPÉ ── */
+.rodape { position: absolute; bottom: 10mm; left: 22mm; right: 18mm; display: flex; justify-content: space-between; align-items: center; }
+.rodape-marca { font-family: 'Cinzel', serif; font-size: 6.5pt; letter-spacing: 2px; color: var(--suave); text-transform: uppercase; }
+.rodape-num { font-family: 'Cinzel', serif; font-size: 6.5pt; color: var(--elem); }
+
+/* ── PRINT ── */
+@media print {
+  body { background: none; }
+  .pagina { margin: 0; box-shadow: none; }
+  .btn-imprimir { display: none; }
+}
+
+/* ── BOTÃO ── */
+.btn-imprimir {
+  position: fixed; top: 20px; right: 20px;
+  background: #c9913a; color: white; border: none;
+  padding: 12px 24px; border-radius: 4px; cursor: pointer;
+  font-family: sans-serif; font-size: 14px; font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 999;
+}
+</style>
+</head>
+<body>
+<button class="btn-imprimir" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+
+<!-- CAPA -->
+<div class="pagina capa">
+  <p class="capa-ornamento">◆ &nbsp; ◆ &nbsp; ◆</p>
+  <div class="capa-simbolo">✦</div>
+  <p class="capa-num">Bônus</p>
+  <h1 class="capa-titulo">Fundamentos da Magia Atual</h1>
+  <p class="capa-sub">O Guia de Base</p>
+  <div class="capa-divider"></div>
+  <p class="capa-serie">Guia de Magia Atual · Box dos 4 Elementos</p>
+  <p class="capa-marca">Guilda da Fonte</p>
+  <p class="capa-rodape">Conhecimento ancestral para a vida urbana</p>
+</div>
+
+<!-- POR QUE A MAGIA NÃO MORREU + O QUE É MAGIA DE VERDADE -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">✦ Fundamentos da Magia Atual</span></div>
+  <div class="citacao">Este guia foi escrito para quem sente que existe algo mais — mas se recusa a engolir explicações rasas ou dogmas prontos. Você está no lugar certo.</div>
+  <h2>Por que a Magia Não Morreu</h2>
+  <p>Existe uma cena que se repete em culturas separadas por oceanos e milênios: alguém acende uma chama, pronuncia palavras com intenção, move as mãos de uma forma específica e espera que algo no mundo se transforme. Essa cena aconteceu nas cavernas de Lascaux há 17 mil anos. Aconteceu nos templos do Egito. Nas florestas celtas, nos terreiros brasileiros, nas cerimônias andinas, nas cozinhas das avós que "rezavam" a comida antes de servir.</p>
+  <p>A prática mágica não é uma fase da humanidade que foi superada pela razão. Ela é uma expressão de algo que está na arquitetura do ser humano: a necessidade de <strong>participar ativamente da realidade</strong>, de não ser apenas um observador passivo da própria vida. A modernidade não eliminou essa necessidade. Ela só mudou o cenário.</p>
+  <p>Os gregos chamavam de "theurgia". Os egípcios, de "heka". Os africanos iorubás, de "axé". Os hindus, "shakti". Os japoneses, "ki". Cada palavra aponta para a mesma intuição: existe uma força que permeia tudo, e ela pode ser acessada e direcionada por quem souber como.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>O que é Magia de Verdade</h2>
+  <h3>Não sobrenatural — supranatural</h3>
+  <p>A magia não propõe que você quebre as leis da física. Ela propõe que você use leis que a física ainda está mapeando. Não é sobrenatural — acima ou contra a natureza. É <strong>supranatural</strong> — acima do modo comum de perceber e operar dentro da natureza.</p>
+  <p>A prática mágica opera com forças que existem — a força da intenção focalizada, os efeitos neurológicos dos rituais, a influência dos ciclos naturais no corpo e na psique. Na Guilda da Fonte, não pedimos que você adote nenhum sistema de crenças. Pedimos que você pratique com intenção e observe com honestidade.</p>
+  <h3>Os 3 Ingredientes Reais de Qualquer Prática</h3>
+  <ul>
+    <li><strong>Intenção</strong> — saber o que você quer com especificidade e honestidade</li>
+    <li><strong>Atenção</strong> — onde você coloca sua atenção, você coloca sua energia</li>
+    <li><strong>Repetição</strong> — o que transforma um ato isolado em prática que cria mudança estrutural</li>
+  </ul>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">2</span></div>
+</div>
+
+<!-- OS 4 PILARES + OS 4 ELEMENTOS + TESTE -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">✦ Fundamentos da Magia Atual</span></div>
+  <h2>Os 4 Pilares da Prática Mágica</h2>
+  <p>Uma fórmula antiga, atribuída às tradições herméticas, resume os pilares de todo praticante: <strong>Conhecer. Ousar. Querer. Calar.</strong></p>
+  <ul>
+    <li><strong>Conhecer</strong> — o autoconhecimento é pré-requisito técnico, não luxo espiritual. Você não pode direcionar energia para algo que não consegue articular.</li>
+    <li><strong>Ousar</strong> — significa agir sem o conforto do ceticismo performático. Acender a vela mesmo sabendo que alguém pode achar esquisito. E agir no mundo físico em direção às suas intenções.</li>
+    <li><strong>Querer</strong> — o desejo genuíno é o motor. Quando você não quer de verdade, o ritual fica vazio.</li>
+    <li><strong>Calar</strong> — não dissipar a energia contando para todo mundo antes da manifestação. Certas sementes precisam de escuridão para germinar.</li>
+  </ul>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>Os 4 Elementos como Linguagem Universal</h2>
+  <p>A teoria dos quatro elementos aparece em praticamente todas as grandes tradições: gregos, hindus, chineses, indígenas americanos, iorubás — não porque uma cultura copiou a outra, mas porque os quatro elementos descrevem as quatro qualidades fundamentais da experiência. Sólido, líquido, gasoso, plasma — Terra, Água, Ar, Fogo.</p>
+  <h3>Como Descobrir seu Elemento Dominante — 5 Perguntas</h3>
+  <ol>
+    <li>Como você reage a uma crise inesperada? <em>(Terra = imobilidade inicial / Água = sente primeiro / Fogo = reação imediata / Ar = análise mental)</em></li>
+    <li>O que te faz sentir mais viva? <em>(Terra = cuidar do concreto / Água = conexões profundas / Fogo = conquistas / Ar = aprender e explorar)</em></li>
+    <li>Onde você guarda sua dor? <em>(Terra = no corpo / Água = nas emoções / Fogo = na ação excessiva / Ar = na cabeça)</em></li>
+    <li>Como as pessoas te descrevem? <em>(Terra = confiável / Água = sensível / Fogo = determinada / Ar = curiosa)</em></li>
+    <li>O que você mais evita? <em>(Terra = mudanças / Água = conflito direto / Fogo = parar / Ar = comprometer-se)</em></li>
+  </ol>
+  <p>O elemento com mais respostas é seu dominante. O com menos é o que mais precisa de atenção.</p>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">3</span></div>
+</div>
+
+<!-- ESPAÇO URBANO + CICLO LUNAR -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">✦ Fundamentos da Magia Atual</span></div>
+  <h2>Como Preparar seu Espaço Mágico Urbano</h2>
+  <h3>Os 5 Itens Essenciais</h3>
+  <p><em>Todos disponíveis em supermercado ou farmácia</em></p>
+  <ol>
+    <li><strong>Uma vela branca</strong> — a vela branca substitui qualquer cor; é o ponto de partida de toda prática</li>
+    <li><strong>Sal grosso</strong> — para limpeza, proteção e potencialização de rituais</li>
+    <li><strong>Um caderno dedicado</strong> — seu diário mágico; onde as intenções ganham forma escrita</li>
+    <li><strong>Uma vasilha de água exclusiva para rituais</strong> — represente o elemento Água em seu espaço</li>
+    <li><strong>Uma planta pequena</strong> — presença viva do elemento Terra; cuide dela como cuida das suas intenções</li>
+  </ol>
+  <div class="caixa-destaque">
+    <h3 style="margin-top:0">Limpeza Energética Básica</h3>
+    <p>Abra uma janela. Passe água salgada nas superfícies. Queime incenso. Bata palmas nos cantos do ambiente. A intenção transforma os gestos — faça devagar, com presença.</p>
+  </div>
+  <h3>Altar em 30cm²</h3>
+  <p>Em qualquer superfície horizontal de 30cm², coloque: uma pedra ou terra (Terra), um copo com água (Água), uma vela (Fogo), uma pena ou incenso (Ar), e um item pessoal que representa sua intenção atual. Troque os itens conforme suas intenções mudam. Mantenha limpo. Trate como espaço especial.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>O Ciclo Lunar como Calendário Mágico</h2>
+  <ul>
+    <li><strong>Lua nova</strong> — plantar intenções: escrever o que quer cultivar no ciclo</li>
+    <li><strong>Lua crescente</strong> — agir em direção às intenções: movimento e construção</li>
+    <li><strong>Lua cheia</strong> — celebrar e intensificar: máxima energia, rituais mais elaborados</li>
+    <li><strong>Lua minguante</strong> — liberar e encerrar: soltar o que não serve</li>
+  </ul>
+  <p>Marque as 4 fases no calendário. Dedique 5-10 minutos em cada uma. <strong>Consistência supera elaboração.</strong></p>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">4</span></div>
+</div>
+
+<!-- ÉTICA + ROTINA DE 10 MINUTOS + DIÁRIO -->
+<div class="pagina pagina-mantra">
+  <p class="mantra-label">✦ &nbsp; Ética, Rotina e Compromisso &nbsp; ✦</p>
+  <h2 class="mantra-titulo">A Base da Prática</h2>
+  <div class="mantra-ornamento">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <div style="text-align:left; max-width: 145mm;">
+    <h3>Ética e Responsabilidade</h3>
+    <p>A lei do retorno não é punição divina — é termodinâmica simbólica. Quando você gera um campo intencional, você está dentro dele. O que irradia de você molda a realidade ao redor de você. <strong>Trabalhe com intenções que você gostaria de receber de volta.</strong></p>
+    <p><em>Proteção básica:</em> antes de rituais mais intensos, visualize uma esfera de luz branca ao redor do corpo. Depois, feche o espaço conscientemente — agradeça, encerre, faça algo aterreiro.</p>
+  </div>
+  <div class="mantra-ornamento" style="margin-top:6mm">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <div style="text-align:left; max-width: 145mm;">
+    <h3>Rotina de 10 Minutos Diários</h3>
+    <ul>
+      <li><strong>2 min:</strong> respiração consciente — inspire 4, segure 4, expire 4, segure 4</li>
+      <li><strong>3 min:</strong> leia ou recite sua intenção, olhe para o altar</li>
+      <li><strong>3 min:</strong> escreva uma linha no diário mágico</li>
+      <li><strong>2 min:</strong> agradeça e encerre conscientemente</li>
+    </ul>
+  </div>
+  <div class="mantra-ornamento" style="margin-top:6mm">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <div style="text-align:left; max-width: 145mm;">
+    <h3>Diário Mágico — O que Registrar</h3>
+    <ul>
+      <li>Data e fase lunar</li>
+      <li>Intenção do momento</li>
+      <li>O que sentiu durante a prática</li>
+      <li>Sonhos relevantes</li>
+      <li>Sincronicidades — coincidências que merecem atenção</li>
+    </ul>
+  </div>
+  <div class="rodape" style="left:22mm;right:18mm"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">5</span></div>
+</div>
+
+<!-- ENCERRAMENTO -->
+<div class="pagina pagina-enc">
+  <div class="enc-simbolo">✦</div>
+  <h2 class="enc-titulo">Você está Pronta</h2>
+  <p class="enc-texto">A magia da Guilda da Fonte não pede fé cega. Pede prática comprometida e observação honesta. Os quatro elementos aguardam — não em algum lugar distante, mas em você mesma. No fogo da sua vontade. Na água das suas emoções. Na terra do seu corpo. No ar da sua voz.</p>
+  <p class="enc-frase"><em>"Comece agora. Acenda uma vela. Escreva uma linha.<br>Já é magia."</em></p>
+  <div class="enc-divider"></div>
+  <p class="enc-texto">
+    🔥 PDF 01 — Fogo: A Chama que Transforma<br>
+    💧 PDF 02 — Água: O Fluxo que Cura<br>
+    🌿 PDF 03 — Terra: A Força que Sustenta<br>
+    🌬 PDF 04 — Ar: A Voz que Manifesta
+  </p>
+  <div class="enc-divider"></div>
+  <p class="enc-marca">Guilda da Fonte</p>
+  <p class="enc-wpp">Dúvidas? WhatsApp (62) 99203-8987</p>
+  <div class="rodape" style="left:24mm;right:24mm"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual · Box dos 4 Elementos</span><span class="rodape-num">6</span></div>
+</div>
+
+</body>
+</html>

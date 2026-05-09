@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Fogo: A Chama que Transforma — Guilda da Fonte</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --preto: #0a0608;
+  --medio: #1a1015;
+  --caixa: #1e1519;
+  --borda: #2e2028;
+  --dourado: #c9913a;
+  --dourado2: #e8b96a;
+  --creme: #f5ede0;
+  --texto: #d4c4b0;
+  --suave: #8a7a6a;
+  --elem: #e85d2a;
+  --elem2: #f08060;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #2a2a2a;
+  font-family: 'EB Garamond', Georgia, serif;
+  color: var(--texto);
+}
+
+.pagina {
+  width: 210mm;
+  min-height: 297mm;
+  background: var(--preto);
+  margin: 0 auto 24px;
+  padding: 20mm 18mm 20mm 22mm;
+  position: relative;
+  border-left: 3px solid var(--elem);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+  page-break-after: always;
+}
+
+.pagina:last-child { page-break-after: auto; }
+
+/* ── CAPA ── */
+.capa {
+  border-left: none;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, #1a0c08 0%, #0a0608 60%);
+  padding: 24mm 18mm;
+}
+.capa::before {
+  content: '';
+  position: absolute; inset: 0;
+  border: 2px solid rgba(232,93,42,0.2);
+  margin: 12mm;
+  pointer-events: none;
+}
+.capa-ornamento { font-size: 10pt; letter-spacing: 12px; color: var(--elem); margin-bottom: 20mm; opacity: 0.6; }
+.capa-simbolo { font-size: 52pt; margin-bottom: 8mm; line-height: 1; }
+.capa-num { font-family: 'Cinzel', serif; font-size: 8pt; letter-spacing: 6px; text-transform: uppercase; color: var(--elem); margin-bottom: 6mm; }
+.capa-titulo { font-family: 'Cinzel Decorative', serif; font-size: 28pt; font-weight: 700; color: var(--creme); line-height: 1.2; margin-bottom: 4mm; }
+.capa-sub { font-family: 'Cinzel Decorative', serif; font-size: 14pt; font-weight: 400; color: var(--elem2); margin-bottom: 16mm; }
+.capa-divider { width: 60mm; height: 1px; background: linear-gradient(90deg, transparent, var(--elem), transparent); margin: 0 auto 16mm; }
+.capa-serie { font-family: 'Cinzel', serif; font-size: 8pt; letter-spacing: 3px; text-transform: uppercase; color: var(--suave); margin-bottom: 4mm; }
+.capa-marca { font-family: 'Cinzel Decorative', serif; font-size: 11pt; color: var(--dourado2); }
+.capa-rodape { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 3px; color: var(--suave); text-transform: uppercase; }
+
+/* ── CABEÇALHO INTERNO ── */
+.cab { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10mm; padding-bottom: 3mm; border-bottom: 1px solid var(--borda); }
+.cab-marca { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 3px; text-transform: uppercase; color: var(--suave); }
+.cab-elem { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 2px; color: var(--elem); text-transform: uppercase; }
+
+/* ── TIPOGRAFIA ── */
+h1 { font-family: 'Cinzel Decorative', serif; font-size: 20pt; font-weight: 700; color: var(--creme); line-height: 1.3; margin-bottom: 6mm; margin-top: 8mm; }
+h2 { font-family: 'Cinzel Decorative', serif; font-size: 14pt; font-weight: 400; color: var(--elem2); line-height: 1.4; margin-bottom: 4mm; margin-top: 8mm; padding-bottom: 2mm; border-bottom: 1px solid rgba(232,93,42,0.2); }
+h3 { font-family: 'Cinzel', serif; font-size: 10pt; font-weight: 600; color: var(--elem); margin-bottom: 3mm; margin-top: 6mm; letter-spacing: 1px; }
+p { font-size: 10.5pt; line-height: 1.75; margin-bottom: 3.5mm; color: var(--texto); }
+strong { color: var(--creme); font-weight: 500; }
+em { color: var(--dourado2); font-style: italic; }
+ul, ol { padding-left: 6mm; margin-bottom: 4mm; }
+li { font-size: 10.5pt; line-height: 1.7; margin-bottom: 1.5mm; color: var(--texto); }
+li strong { color: var(--elem2); }
+
+/* ── COMPONENTES ── */
+.citacao {
+  background: var(--caixa); border-left: 3px solid var(--elem);
+  padding: 5mm 6mm; margin: 5mm 0; border-radius: 2px;
+  font-style: italic; font-size: 10pt; color: var(--dourado2); line-height: 1.7;
+}
+.caixa-destaque {
+  background: var(--caixa); border: 1px solid var(--borda);
+  border-top: 2px solid var(--elem); padding: 5mm 6mm;
+  margin: 5mm 0; border-radius: 2px;
+}
+.caixa-destaque p { margin-bottom: 2mm; }
+.divisor { text-align: center; color: var(--elem); font-size: 9pt; letter-spacing: 8px; margin: 6mm 0; opacity: 0.5; }
+.ornamento { text-align: center; color: var(--dourado); font-size: 10pt; letter-spacing: 6px; margin: 6mm 0; opacity: 0.4; }
+
+/* ── MANTRA ── */
+.pagina-mantra {
+  border-left: none;
+  background: var(--medio);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 24mm 22mm;
+}
+.pagina-mantra::before {
+  content: '';
+  position: absolute; inset: 10mm;
+  border: 1px solid rgba(232,93,42,0.25);
+  pointer-events: none;
+}
+.mantra-label { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 5px; text-transform: uppercase; color: var(--elem); margin-bottom: 10mm; }
+.mantra-titulo { font-family: 'Cinzel Decorative', serif; font-size: 16pt; color: var(--creme); margin-bottom: 10mm; font-weight: 400; }
+.mantra-ornamento { font-size: 9pt; letter-spacing: 8px; color: var(--elem); margin-bottom: 8mm; opacity: 0.5; }
+.mantra-texto { font-family: 'EB Garamond', serif; font-size: 13pt; line-height: 2; color: var(--texto); font-style: italic; margin-bottom: 8mm; }
+.mantra-fecho { font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: 2px; color: var(--dourado2); margin-top: 4mm; }
+.mantra-instrucoes { margin-top: 10mm; padding-top: 8mm; border-top: 1px solid var(--borda); max-width: 130mm; }
+.mantra-instrucoes p { font-size: 9.5pt; color: var(--suave); line-height: 1.7; }
+
+/* ── ENCERRAMENTO ── */
+.pagina-enc {
+  border-left: none;
+  background: linear-gradient(160deg, #1a0c08 0%, #0a0608 60%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 24mm;
+}
+.pagina-enc::before {
+  content: '';
+  position: absolute; inset: 12mm;
+  border: 1px solid rgba(232,93,42,0.15);
+  pointer-events: none;
+}
+.enc-simbolo { font-size: 36pt; margin-bottom: 8mm; }
+.enc-titulo { font-family: 'Cinzel Decorative', serif; font-size: 16pt; color: var(--creme); font-weight: 400; margin-bottom: 6mm; line-height: 1.4; }
+.enc-texto { font-size: 10.5pt; color: var(--texto); line-height: 1.8; max-width: 130mm; margin-bottom: 10mm; }
+.enc-frase { font-family: 'Cinzel', serif; font-size: 9pt; color: var(--elem2); font-style: italic; letter-spacing: 1px; margin-bottom: 12mm; }
+.enc-divider { width: 40mm; height: 1px; background: linear-gradient(90deg, transparent, var(--elem), transparent); margin: 0 auto 10mm; }
+.enc-marca { font-family: 'Cinzel Decorative', serif; font-size: 11pt; color: var(--dourado2); margin-bottom: 4mm; }
+.enc-wpp { font-family: 'Cinzel', serif; font-size: 8pt; color: var(--suave); letter-spacing: 1px; }
+
+/* ── RODAPÉ ── */
+.rodape { position: absolute; bottom: 10mm; left: 22mm; right: 18mm; display: flex; justify-content: space-between; align-items: center; }
+.rodape-marca { font-family: 'Cinzel', serif; font-size: 6.5pt; letter-spacing: 2px; color: var(--suave); text-transform: uppercase; }
+.rodape-num { font-family: 'Cinzel', serif; font-size: 6.5pt; color: var(--elem); }
+
+/* ── PRINT ── */
+@media print {
+  body { background: none; }
+  .pagina { margin: 0; box-shadow: none; }
+  .btn-imprimir { display: none; }
+}
+
+/* ── BOTÃO ── */
+.btn-imprimir {
+  position: fixed; top: 20px; right: 20px;
+  background: #e85d2a; color: white; border: none;
+  padding: 12px 24px; border-radius: 4px; cursor: pointer;
+  font-family: sans-serif; font-size: 14px; font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 999;
+}
+</style>
+</head>
+<body>
+<button class="btn-imprimir" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+
+<!-- CAPA -->
+<div class="pagina capa">
+  <p class="capa-ornamento">◆ &nbsp; ◆ &nbsp; ◆</p>
+  <div class="capa-simbolo">🔥</div>
+  <p class="capa-num">PDF 01</p>
+  <h1 class="capa-titulo">Fogo</h1>
+  <p class="capa-sub">A Chama que Transforma</p>
+  <div class="capa-divider"></div>
+  <p class="capa-serie">Guia de Magia Atual · Box dos 4 Elementos</p>
+  <p class="capa-marca">Guilda da Fonte</p>
+  <p class="capa-rodape">Conhecimento ancestral para a vida urbana</p>
+</div>
+
+<!-- INTRODUÇÃO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🔥 Fogo — A Chama que Transforma</span></div>
+  <div class="citacao">"O fogo não pergunta permissão para brilhar. Ele simplesmente arde."</div>
+  <h2>Introdução: O Fogo Mora em Você</h2>
+  <p>Você já sentiu aquele calor no peito quando algo te indigna profundamente? Aquela chama que sobe pela espinha quando você toma uma decisão que muda tudo? Essa sensação não é metáfora — é o fogo elementar vivo dentro de você, pulsando, esperando ser reconhecido.</p>
+  <p>O Fogo é o elemento da transformação radical. Ele não modifica, não ajusta, não conserta. Ele transforma. O que entra no fogo não sai igual. Pode sair como cinza, como fumaça, como calor, como luz — mas nunca sai como entrou. E é exatamente isso que você vai aprender a usar.</p>
+  <p>Vivemos num tempo em que somos ensinados a conter o fogo. A ser cautelosos, moderados, equilibrados. E há sabedoria nisso. Mas há também um perigo enorme no fogo sufocado: ele não desaparece. Ele queima por dentro. Vira ansiedade, vira raiva sem saída, vira aquela sensação de estar travada num ciclo que nunca muda.</p>
+  <p>A magia do Fogo te ensina a ser a guardiã da sua própria chama — nem a sufocar, nem a deixar queimar descontrolada. Mas a conduzi-la com intenção.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>A Filosofia do Fogo na Magia Urbana</h2>
+  <h3>O Fogo nas Tradições do Mundo</h3>
+  <p>Em praticamente todas as culturas humanas, o fogo foi o primeiro símbolo sagrado. Os gregos tinham Héstia, guardiã da chama eterna do lar. Os romanos, as Vestais que nunca deixavam o fogo do templo se apagar. No candomblé e na umbanda, Xangô e Ogum carregam a força do fogo como justiça e ação. Os celtas acendiam enormes fogueiras em Beltane para honrar a vida e a fertilidade.</p>
+  <p>Por quê? Porque antes de qualquer coisa, o fogo <strong>muda o estado das coisas</strong>. Ele pega o cru e faz cozido. Pega o duro e faz maleável. Pega o escuro e faz luminoso. O fogo é a prova material de que <strong>transformação é possível</strong>.</p>
+  <h3>O Fogo no Apartamento do Século XXI</h3>
+  <p>Você mora num apartamento de 60 metros quadrados. Não tem floresta, não tem fogueira, não tem rituais de três horas ao luar. O que você tem é uma vela de R$8 comprada no mercado, um isqueiro e 20 minutos antes de dormir.</p>
+  <p><strong>Isso é suficiente.</strong> A magia urbana com fogo entende que o símbolo carrega a força do elemento. Uma vela acesa com consciência plena não é inferior a uma fogueira ritual. É o fogo doméstico, o fogo do lar — que os antigos consideravam tão sagrado quanto o fogo dos grandes rituais.</p>
+  <h3>As Qualidades do Fogo</h3>
+  <ul>
+    <li><strong>Transformação</strong> — deixar morrer o que precisa morrer para que o novo nasça</li>
+    <li><strong>Coragem</strong> — o fogo ilumina o que evitamos ver e nos dá força para agir</li>
+    <li><strong>Paixão e desejo</strong> — o motor que move, que atrai, que cria</li>
+    <li><strong>Força de vontade</strong> — a capacidade de sustentar uma chama mesmo quando o vento sopra contra</li>
+    <li><strong>Purificação</strong> — o fogo limpa, esteriliza, elimina o que não serve</li>
+    <li><strong>Manifestação rápida</strong> — entre os quatro elementos, o fogo é o que age mais depressa</li>
+  </ul>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">2</span></div>
+</div>
+
+<!-- VELA -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🔥 Fogo — A Chama que Transforma</span></div>
+  <h2>A Vela como Portal</h2>
+  <h3>A Escolha da Vela Certa</h3>
+  <p>A vela é sua ferramenta mais poderosa e mais acessível. Não existe vela "errada" — existe vela escolhida com intenção versus vela escolhida sem atenção.</p>
+  <div class="caixa-destaque">
+    <h3 style="margin-top:0">Por cor:</h3>
+    <ul>
+      <li><strong>Vermelha</strong> — amor, paixão, energia vital, coragem, sexualidade</li>
+      <li><strong>Laranja</strong> — criatividade, atração, novos projetos, alegria</li>
+      <li><strong>Amarela</strong> — clareza mental, comunicação, estudo, decisões</li>
+      <li><strong>Branca</strong> — limpeza, proteção, clareza, paz, espiritualidade <em>(substitui qualquer cor)</em></li>
+      <li><strong>Preta</strong> — proteção intensa, banimento, corte de laços</li>
+      <li><strong>Verde</strong> — prosperidade, saúde, crescimento, equilíbrio</li>
+      <li><strong>Roxa</strong> — espiritualidade profunda, transformação interior</li>
+    </ul>
+  </div>
+  <p>Se você está começando, <strong>uma vela branca faz tudo</strong>. Não deixe a ausência da cor certa ser motivo para não praticar.</p>
+  <h3>Como Consagrar uma Vela</h3>
+  <p>Consagrar é o ato de transformar um objeto comum em uma ferramenta mágica. Requer apenas presença.</p>
+  <ol>
+    <li>Lave as mãos com água e sal antes de começar.</li>
+    <li>Segure a vela entre as palmas das mãos. Feche os olhos. Respire fundo três vezes.</li>
+    <li>Visualize uma luz dourada saindo do centro do seu peito e entrando na vela pelas suas palmas.</li>
+    <li>Diga: <em>"Esta vela é limpa de toda energia que não me serve. Ela é consagrada à [sua intenção]. Que assim seja."</em></li>
+    <li>Se desejar, unte a vela com azeite. Para atrair: do centro para as extremidades. Para liberar: das extremidades para o centro.</li>
+  </ol>
+  <h3>Acender com Intenção</h3>
+  <p>O momento de riscar o fósforo é um momento de poder. Antes de acender, tenha clareza cristalina sobre sua intenção — uma frase no presente do indicativo. Não "eu quero", mas "eu tenho", "eu sou", "acontece em mim".</p>
+  <p>Enquanto acende, olhe para a chama nascendo e sinta que você está abrindo um portal entre sua intenção e a realidade. <strong>Nunca apague uma vela ritual soprando pela boca.</strong> Use um apagador ou dois dedos umedecidos. Soprar apaga a intenção.</p>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">3</span></div>
+</div>
+
+<!-- RITUAL DE LIBERTAÇÃO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🔥 Fogo — A Chama que Transforma</span></div>
+  <h2>Ritual de Libertação com Papel e Chama</h2>
+  <p><em>Adaptado para apartamento — mínimo de fumaça, máximo de poder</em></p>
+  <p>Este ritual é para liberar: relacionamentos que acabaram, padrões que se repetem, medos antigos, hábitos que não servem mais, mágoas, crenças limitantes.</p>
+  <div class="caixa-destaque">
+    <h3 style="margin-top:0">O que você vai precisar:</h3>
+    <ul>
+      <li>1 vela branca ou preta</li>
+      <li>1 pedaço de papel</li>
+      <li>1 caneta</li>
+      <li>1 prato ou tigela de cerâmica ou vidro resistente ao calor</li>
+      <li>1 copo d'água ao lado (segurança)</li>
+      <li>Sal grosso (opcional)</li>
+    </ul>
+  </div>
+  <h3>Como fazer:</h3>
+  <p><strong>Preparação (5 min):</strong> Escolha um momento sem interrupções. Abra uma fresta de janela. Acenda a vela consagrada. Sente-se. Respire. Traga à mente aquilo que quer liberar — sem raiva, sem julgamento.</p>
+  <p><strong>O Ritual (10-15 min):</strong> Escreva no papel o que deseja liberar. Tudo que veio — não censure. Se chorar, deixa. Quando terminar, leia em voz alta uma vez.</p>
+  <p>Depois diga: <em>"Eu reconheço você. Você fez parte da minha história. E agora eu te libero com amor e com clareza. Que o fogo transforme o que não serve em cinza, e da cinza, que venha o novo."</em></p>
+  <p>Dobre o papel três vezes em direção a você. Segure o canto sobre a chama e coloque no prato para queimar. O papel é pequeno — queimará rapidamente e com pouca fumaça. Observe o que você escreveu se transformar em luz e cinza.</p>
+  <p><strong>Encerramento:</strong> Quando as cinzas esfriarem, descarte-as fora de casa — no vaso sanitário ou no lixo da rua. Não guarde cinzas de ritual de liberação em casa. Permita que a vela continue acesa por mais 15-20 minutos.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>Ritual de Atração com Vela e Espelho</h2>
+  <div class="caixa-destaque">
+    <h3 style="margin-top:0">O que você vai precisar:</h3>
+    <ul>
+      <li>1 vela vermelha, laranja, dourada ou branca</li>
+      <li>1 espelho</li>
+      <li>Papel e caneta · Azeite para ungir a vela</li>
+    </ul>
+  </div>
+  <p>Faça à noite, com a luz apagada ou bem baixa. Consagre e unte a vela do centro para as pontas. Posicione: você → vela → espelho.</p>
+  <p>Acenda a vela. Olhe para a chama. Depois levante os olhos e olhe para si mesma no espelho, através da chama. Diga em voz alta, olhando nos seus próprios olhos:</p>
+  <div class="citacao">"Eu [seu nome] sou digna de receber [sua intenção]. Isso já existe para mim. Eu me abro para isso com todo o meu ser. O fogo sela e manifesta."</div>
+  <p>Repita três vezes. Escreva sua intenção no papel e coloque <em>embaixo</em> do suporte da vela. Deixe a vela queimar pelo menos uma hora.</p>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">4</span></div>
+</div>
+
+<!-- MANTRA -->
+<div class="pagina pagina-mantra">
+  <p class="mantra-label">✦ &nbsp; Mantra do Fogo &nbsp; ✦</p>
+  <h2 class="mantra-titulo">A Chama que Não se Apaga</h2>
+  <div class="mantra-ornamento">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <p class="mantra-texto">
+    Eu sou chama que não se apaga,<br>
+    ardor que nasce do centro da terra.<br>
+    Sou o fogo que purifica e afaga,<br>
+    a luz que transforma tudo que erra.<br><br>
+    Ardo em mim o que precisa arder,<br>
+    liberto o que já cumpriu seu papel.<br>
+    Sou força, sou luz, sou poder,<br>
+    e minha chama ninguém pode quebrar.<br><br>
+    Pelo fogo que há em mim,<br>
+    pelo fogo que há em tudo,<br>
+    minha transformação começa aqui —<br>
+    nem pausada, nem em segredo.
+  </p>
+  <p class="mantra-fecho">Fogo, fogo, fogo em mim.<br>Que assim seja. Que assim é.</p>
+  <div class="mantra-instrucoes">
+    <p>Repita em voz alta três vezes antes de acender qualquer vela ritual. Pode também ser usado pela manhã, ao se olhar no espelho, para ativar a energia do dia. As duas últimas linhas funcionam como gatilho imediato de potência.</p>
+  </div>
+  <div class="rodape" style="left:22mm;right:18mm"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">5</span></div>
+</div>
+
+<!-- SÍMBOLOS E AFIRMAÇÕES -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🔥 Fogo — A Chama que Transforma</span></div>
+  <h2>Símbolos do Fogo e Como Usá-los</h2>
+  <h3>O Triângulo Apontado para Cima △</h3>
+  <p>O símbolo alquímico do Fogo — triângulo com o vértice voltado para cima. Representa a chama em sua forma mais pura: o impulso ascendente, o espírito que sobe, a energia que transforma o denso em sutil.</p>
+  <ul>
+    <li><strong>No diário:</strong> Desenhe no topo da página antes de escrever intenções de transformação ou coragem.</li>
+    <li><strong>No corpo:</strong> Trace com o dedo indicador sobre o esterno antes de conversas importantes ou apresentações.</li>
+    <li><strong>No ar:</strong> Trace à sua frente em momentos de necessidade de proteção ou força imediata.</li>
+  </ul>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>Afirmações de Poder do Fogo</h2>
+  <p><em>Diga em voz alta, de preferência pela manhã, olhando nos seus próprios olhos no espelho.</em></p>
+  <div class="caixa-destaque">
+    <p><strong>1.</strong> Eu tenho o poder de transformar qualquer situação da minha vida. Sou a chama e o alquimista.</p>
+    <p><strong>2.</strong> Minha força de vontade é inabalável. O que decido, acontece. O que intenciono, se manifesta.</p>
+    <p><strong>3.</strong> Eu me permito arder de paixão pelo que amo. Meu entusiasmo é sagrado e é poderoso.</p>
+    <p><strong>4.</strong> Eu libero sem culpa o que não me serve mais. O fogo purifica — e eu confio no processo.</p>
+    <p><strong>5.</strong> Sou corajosa. Sou capaz. Sou luz onde havia escuridão.</p>
+    <p><strong>6.</strong> Minha vida está em constante transformação para melhor. Eu não tenho medo de mudar.</p>
+    <p><strong>7.</strong> O fogo que arde em mim é o mesmo fogo das estrelas. Sou feita de cosmos e de coragem.</p>
+  </div>
+  <p>Escolha duas ou três afirmações para trabalhar por semana. Repita sete vezes ao dia. A repetição não é sobre "convencer" — é sobre <strong>reconhecer</strong> uma verdade que já existe em você.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>O Fogo Interior — Práticas para Fortalecer sua Chama</h2>
+  <h3>A Chama de Um Minuto</h3>
+  <p>Uma vez por dia, sente-se na frente de uma vela acesa. Olhe para a chama por exatamente um minuto sem deixar seu pensamento vagar completamente. Quando a mente fugir, gentilmente traga de volta. Depois de uma semana fazendo um minuto, vá para dois. Em um mês, você terá uma capacidade de foco que a maioria das pessoas nunca desenvolve.</p>
+  <h3>A Decisão Cumprida</h3>
+  <p>Todo dia, faça uma pequena decisão que você vai cumprir. Cada vez que você diz que vai fazer algo e faz, você diz ao seu inconsciente: <em>"Minha palavra tem poder. Minhas intenções se materializam."</em> Essa é a base de toda magia real.</p>
+  <h3>Quando o Fogo Está Baixo</h3>
+  <p>Mova o corpo. Acenda uma vela vermelha ou laranja. Beba algo quente — chá de gengibre, café, canela. Coloque uma música que "liga" você. Lembre de um momento em que você foi incrivelmente corajosa. O fogo reconhece o fogo.</p>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">6</span></div>
+</div>
+
+<!-- ENCERRAMENTO -->
+<div class="pagina pagina-enc">
+  <div class="enc-simbolo">🔥</div>
+  <h2 class="enc-titulo">Você é a Chama</h2>
+  <p class="enc-texto">A magia do Fogo não está nas velas, não está nos rituais, não está nos símbolos. Está em você. Sempre esteve. As velas, os rituais, os mantras — eles são espelhos. Eles refletem de volta para você o poder que você esqueceu que tem.</p>
+  <p class="enc-frase"><em>"Você é feita de estrelas que explodiram bilhões de anos atrás.<br>O fogo não é algo externo que você convoca — é algo interno que você desperta."</em></p>
+  <div class="enc-divider"></div>
+  <p class="enc-texto">Acenda sua vela.<br>Acenda sua chama.<br>Acenda você.</p>
+  <div class="enc-divider"></div>
+  <p class="enc-marca">Guilda da Fonte</p>
+  <p class="enc-wpp">Dúvidas? WhatsApp (62) 99203-8987</p>
+  <div class="rodape" style="left:24mm;right:24mm"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual · Box dos 4 Elementos</span><span class="rodape-num">7</span></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Terra: A Força que Sustenta — Guilda da Fonte</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --preto: #0a0608;
+  --medio: #1a1015;
+  --caixa: #1e1519;
+  --borda: #2e2028;
+  --dourado: #c9913a;
+  --dourado2: #e8b96a;
+  --creme: #f5ede0;
+  --texto: #d4c4b0;
+  --suave: #8a7a6a;
+  --elem: #6b8c3a;
+  --elem2: #9abf6a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #2a2a2a;
+  font-family: 'EB Garamond', Georgia, serif;
+  color: var(--texto);
+}
+
+.pagina {
+  width: 210mm;
+  min-height: 297mm;
+  background: var(--preto);
+  margin: 0 auto 24px;
+  padding: 20mm 18mm 20mm 22mm;
+  position: relative;
+  border-left: 3px solid var(--elem);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+  page-break-after: always;
+}
+
+.pagina:last-child { page-break-after: auto; }
+
+/* ── CAPA ── */
+.capa {
+  border-left: none;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, #0d1508 0%, #0a0608 60%);
+  padding: 24mm 18mm;
+}
+.capa::before {
+  content: '';
+  position: absolute; inset: 0;
+  border: 2px solid rgba(107,140,58,0.2);
+  margin: 12mm;
+  pointer-events: none;
+}
+.capa-ornamento { font-size: 10pt; letter-spacing: 12px; color: var(--elem); margin-bottom: 20mm; opacity: 0.6; }
+.capa-simbolo { font-size: 52pt; margin-bottom: 8mm; line-height: 1; }
+.capa-num { font-family: 'Cinzel', serif; font-size: 8pt; letter-spacing: 6px; text-transform: uppercase; color: var(--elem); margin-bottom: 6mm; }
+.capa-titulo { font-family: 'Cinzel Decorative', serif; font-size: 28pt; font-weight: 700; color: var(--creme); line-height: 1.2; margin-bottom: 4mm; }
+.capa-sub { font-family: 'Cinzel Decorative', serif; font-size: 14pt; font-weight: 400; color: var(--elem2); margin-bottom: 16mm; }
+.capa-divider { width: 60mm; height: 1px; background: linear-gradient(90deg, transparent, var(--elem), transparent); margin: 0 auto 16mm; }
+.capa-serie { font-family: 'Cinzel', serif; font-size: 8pt; letter-spacing: 3px; text-transform: uppercase; color: var(--suave); margin-bottom: 4mm; }
+.capa-marca { font-family: 'Cinzel Decorative', serif; font-size: 11pt; color: var(--dourado2); }
+.capa-rodape { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 3px; color: var(--suave); text-transform: uppercase; }
+
+/* ── CABEÇALHO INTERNO ── */
+.cab { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10mm; padding-bottom: 3mm; border-bottom: 1px solid var(--borda); }
+.cab-marca { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 3px; text-transform: uppercase; color: var(--suave); }
+.cab-elem { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 2px; color: var(--elem); text-transform: uppercase; }
+
+/* ── TIPOGRAFIA ── */
+h1 { font-family: 'Cinzel Decorative', serif; font-size: 20pt; font-weight: 700; color: var(--creme); line-height: 1.3; margin-bottom: 6mm; margin-top: 8mm; }
+h2 { font-family: 'Cinzel Decorative', serif; font-size: 14pt; font-weight: 400; color: var(--elem2); line-height: 1.4; margin-bottom: 4mm; margin-top: 8mm; padding-bottom: 2mm; border-bottom: 1px solid rgba(107,140,58,0.2); }
+h3 { font-family: 'Cinzel', serif; font-size: 10pt; font-weight: 600; color: var(--elem); margin-bottom: 3mm; margin-top: 6mm; letter-spacing: 1px; }
+p { font-size: 10.5pt; line-height: 1.75; margin-bottom: 3.5mm; color: var(--texto); }
+strong { color: var(--creme); font-weight: 500; }
+em { color: var(--dourado2); font-style: italic; }
+ul, ol { padding-left: 6mm; margin-bottom: 4mm; }
+li { font-size: 10.5pt; line-height: 1.7; margin-bottom: 1.5mm; color: var(--texto); }
+li strong { color: var(--elem2); }
+
+/* ── COMPONENTES ── */
+.citacao {
+  background: var(--caixa); border-left: 3px solid var(--elem);
+  padding: 5mm 6mm; margin: 5mm 0; border-radius: 2px;
+  font-style: italic; font-size: 10pt; color: var(--dourado2); line-height: 1.7;
+}
+.caixa-destaque {
+  background: var(--caixa); border: 1px solid var(--borda);
+  border-top: 2px solid var(--elem); padding: 5mm 6mm;
+  margin: 5mm 0; border-radius: 2px;
+}
+.caixa-destaque p { margin-bottom: 2mm; }
+.divisor { text-align: center; color: var(--elem); font-size: 9pt; letter-spacing: 8px; margin: 6mm 0; opacity: 0.5; }
+.ornamento { text-align: center; color: var(--dourado); font-size: 10pt; letter-spacing: 6px; margin: 6mm 0; opacity: 0.4; }
+
+/* ── MANTRA ── */
+.pagina-mantra {
+  border-left: none;
+  background: var(--medio);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 24mm 22mm;
+}
+.pagina-mantra::before {
+  content: '';
+  position: absolute; inset: 10mm;
+  border: 1px solid rgba(107,140,58,0.25);
+  pointer-events: none;
+}
+.mantra-label { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 5px; text-transform: uppercase; color: var(--elem); margin-bottom: 10mm; }
+.mantra-titulo { font-family: 'Cinzel Decorative', serif; font-size: 16pt; color: var(--creme); margin-bottom: 10mm; font-weight: 400; }
+.mantra-ornamento { font-size: 9pt; letter-spacing: 8px; color: var(--elem); margin-bottom: 8mm; opacity: 0.5; }
+.mantra-texto { font-family: 'EB Garamond', serif; font-size: 13pt; line-height: 2; color: var(--texto); font-style: italic; margin-bottom: 8mm; }
+.mantra-fecho { font-family: 'Cinzel', serif; font-size: 9pt; letter-spacing: 2px; color: var(--dourado2); margin-top: 4mm; }
+.mantra-instrucoes { margin-top: 10mm; padding-top: 8mm; border-top: 1px solid var(--borda); max-width: 130mm; }
+.mantra-instrucoes p { font-size: 9.5pt; color: var(--suave); line-height: 1.7; }
+
+/* ── ENCERRAMENTO ── */
+.pagina-enc {
+  border-left: none;
+  background: linear-gradient(160deg, #0d1508 0%, #0a0608 60%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 24mm;
+}
+.pagina-enc::before {
+  content: '';
+  position: absolute; inset: 12mm;
+  border: 1px solid rgba(107,140,58,0.15);
+  pointer-events: none;
+}
+.enc-simbolo { font-size: 36pt; margin-bottom: 8mm; }
+.enc-titulo { font-family: 'Cinzel Decorative', serif; font-size: 16pt; color: var(--creme); font-weight: 400; margin-bottom: 6mm; line-height: 1.4; }
+.enc-texto { font-size: 10.5pt; color: var(--texto); line-height: 1.8; max-width: 130mm; margin-bottom: 10mm; }
+.enc-frase { font-family: 'Cinzel', serif; font-size: 9pt; color: var(--elem2); font-style: italic; letter-spacing: 1px; margin-bottom: 12mm; }
+.enc-divider { width: 40mm; height: 1px; background: linear-gradient(90deg, transparent, var(--elem), transparent); margin: 0 auto 10mm; }
+.enc-marca { font-family: 'Cinzel Decorative', serif; font-size: 11pt; color: var(--dourado2); margin-bottom: 4mm; }
+.enc-wpp { font-family: 'Cinzel', serif; font-size: 8pt; color: var(--suave); letter-spacing: 1px; }
+
+/* ── RODAPÉ ── */
+.rodape { position: absolute; bottom: 10mm; left: 22mm; right: 18mm; display: flex; justify-content: space-between; align-items: center; }
+.rodape-marca { font-family: 'Cinzel', serif; font-size: 6.5pt; letter-spacing: 2px; color: var(--suave); text-transform: uppercase; }
+.rodape-num { font-family: 'Cinzel', serif; font-size: 6.5pt; color: var(--elem); }
+
+/* ── PRINT ── */
+@media print {
+  body { background: none; }
+  .pagina { margin: 0; box-shadow: none; }
+  .btn-imprimir { display: none; }
+}
+
+/* ── BOTÃO ── */
+.btn-imprimir {
+  position: fixed; top: 20px; right: 20px;
+  background: #6b8c3a; color: white; border: none;
+  padding: 12px 24px; border-radius: 4px; cursor: pointer;
+  font-family: sans-serif; font-size: 14px; font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 999;
+}
+</style>
+</head>
+<body>
+<button class="btn-imprimir" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+
+<!-- CAPA -->
+<div class="pagina capa">
+  <p class="capa-ornamento">◆ &nbsp; ◆ &nbsp; ◆</p>
+  <div class="capa-simbolo">🌿</div>
+  <p class="capa-num">PDF 03</p>
+  <h1 class="capa-titulo">Terra</h1>
+  <p class="capa-sub">A Força que Sustenta</p>
+  <div class="capa-divider"></div>
+  <p class="capa-serie">Guia de Magia Atual · Box dos 4 Elementos</p>
+  <p class="capa-marca">Guilda da Fonte</p>
+  <p class="capa-rodape">Conhecimento ancestral para a vida urbana</p>
+</div>
+
+<!-- INTRODUÇÃO E FILOSOFIA -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌿 Terra — A Força que Sustenta</span></div>
+  <div class="citacao">"A terra não corre atrás da chuva. Ela se prepara, se abre, e quando a chuva chega, ela recebe e transforma."</div>
+  <h2>Introdução: O Chão Mora em Você</h2>
+  <p>Você está lendo isso provavelmente sentada numa cadeira, num apartamento, num prédio — camadas e camadas de concreto entre você e o solo vivo. Essa distância da terra não é apenas física: é o principal motivo pelo qual tantas pessoas se sentem sem chão, ansiosas, incapazes de terminar o que começam.</p>
+  <p>O elemento Terra é o que ancora. É o que diz: <strong>você está aqui, você é real, você pode construir.</strong></p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>A Filosofia da Terra na Magia</h2>
+  <h3>A Terra nas Tradições do Mundo</h3>
+  <p>Oxalá como criador da forma. Nanã, senhora da lama primordial de onde toda vida emerge. Deméter e Perséfone, o ciclo do plantio e da colheita. As tradições celtas de Samhain honrando os antepassados. A Pachamama andina — a Mãe Terra como ser vivo que sustenta tudo. Em todas: a Terra não é passiva — ela é a <strong>matriz de toda vida</strong>.</p>
+  <h3>As Qualidades da Terra</h3>
+  <ul>
+    <li><strong>Estabilidade</strong> — o chão firme sob os pés, o centro que não oscila</li>
+    <li><strong>Persistência</strong> — a pedra que não se move, a raiz que aprofunda</li>
+    <li><strong>Paciência</strong> — o tempo da terra é longo; ela sabe esperar a hora certa</li>
+    <li><strong>Manifestação material</strong> — a capacidade de tornar real o que é intencional</li>
+    <li><strong>Saúde física</strong> — o corpo como templo, o cuidado concreto com a matéria</li>
+    <li><strong>Prosperidade</strong> — a abundância que nasce do cultivo consistente</li>
+    <li><strong>Ancoragem e pertencimento</strong> — o sentido de lugar, de raiz, de estar em casa</li>
+  </ul>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">2</span></div>
+</div>
+
+<!-- ALTAR URBANO E ERVAS -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌿 Terra — A Força que Sustenta</span></div>
+  <h2>Altar Urbano em 30cm²</h2>
+  <p>Um altar não é decoração — é um mapa tridimensional das suas intenções. Em qualquer superfície horizontal de 30cm², você pode colocar: uma pedra ou punhado de terra (Terra), um copo com água (Água), uma vela (Fogo), uma pena ou incenso (Ar), e um item pessoal que representa o que você está cultivando. Troque os itens conforme suas intenções mudam. Mantenha limpo. Trate como espaço especial.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>As 7 Ervas Urbanas Mais Poderosas</h2>
+  <p><em>Todas disponíveis em mercado ou feira</em></p>
+  <ul>
+    <li><strong>Alecrim</strong> — proteção, memória, purificação. Use em banhos, queime como incenso natural, plante num vaso.</li>
+    <li><strong>Manjericão</strong> — prosperidade, amor, proteção do lar. Mantenha um vaso na cozinha. Toque as folhas com intenção de abundância.</li>
+    <li><strong>Arruda</strong> — proteção intensa, quebra de energias negativas. Um ramo na entrada da casa ou no bolso.</li>
+    <li><strong>Hortelã</strong> — clareza mental, energia, atração de dinheiro. Chá com intenção de clareza antes de decisões.</li>
+    <li><strong>Canela</strong> — prosperidade, atração, aquecimento energético. Um pau de canela no altar ou no bolso da carteira.</li>
+    <li><strong>Lavanda</strong> — paz, sono, cura emocional, amor próprio. Sachê na almofada para sonhos lúcidos.</li>
+    <li><strong>Babosa (Aloe Vera)</strong> — proteção do lar, cura, resistência. A planta mais poderosa para manter viva em apartamento.</li>
+  </ul>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">3</span></div>
+</div>
+
+<!-- RITUAL DE PROSPERIDADE -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌿 Terra — A Força que Sustenta</span></div>
+  <h2>Ritual da Terra com Sal e Intenção</h2>
+  <div class="caixa-destaque">
+    <h3 style="margin-top:0">O que você vai precisar:</h3>
+    <ul>
+      <li>1 vela verde ou dourada</li>
+      <li>3 colheres de sal grosso</li>
+      <li>1 moeda (qualquer valor)</li>
+      <li>1 papel e caneta</li>
+      <li>1 pequeno vaso com terra (ou a terra de um vaso de planta que você já tem)</li>
+    </ul>
+  </div>
+  <h3>Como fazer:</h3>
+  <p>Acenda a vela. Escreva no papel o que você deseja manifestar materialmente — seja específica, seja honesta. Diga em voz alta: <em>"Que a Terra receba minha intenção e a transforme em realidade concreta."</em></p>
+  <p>Misture o sal com a terra do vaso — o sal purifica e potencializa. Enterre a moeda na terra do vaso, com o papel dobrado por baixo dela. A moeda representa o valor do que você está plantando. A terra vai fazer o trabalho de germinar.</p>
+  <p>Cuide da planta. Regue com intenção de crescimento. Quando a intenção se manifestar, agradeça — e plante uma semente nova.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>Ritual de Gratidão Semanal</h2>
+  <p>Todo domingo à noite, acenda uma vela verde ou branca. Abra o diário e escreva <strong>5 coisas concretas</strong> pelas quais você é grata nessa semana. Não genéricas — específicas.</p>
+  <p>Não "sou grata pela saúde" mas "sou grata que meu corpo aguentou os três dias intensos dessa semana."</p>
+  <p>A gratidão concreta ativa o elemento Terra — ela <strong>ancora as bênçãos na realidade material</strong>.</p>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">4</span></div>
+</div>
+
+<!-- MANTRA -->
+<div class="pagina pagina-mantra">
+  <p class="mantra-label">✦ &nbsp; Mantra da Terra &nbsp; ✦</p>
+  <h2 class="mantra-titulo">A Força que Sustenta</h2>
+  <div class="mantra-ornamento">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <p class="mantra-texto">
+    Eu sou terra que sustenta e que nutre,<br>
+    raiz que aprofunda enquanto o mundo gira.<br>
+    Sou a pedra que no vento não se quebra,<br>
+    o solo fértil onde a vida inspira.<br><br>
+    Planto com paciência o que desejo colher,<br>
+    e confio no tempo que a terra conhece.<br>
+    Sou abundância que aprende a receber,<br>
+    e no concreto, minha magia cresce.<br><br>
+    Pela terra que há em mim,<br>
+    pela terra que há em tudo,<br>
+    minha prosperidade começa aqui —<br>
+    sólida, real e absoluta.
+  </p>
+  <p class="mantra-fecho">Terra, terra, terra em mim.<br>Que assim seja. Que assim é.</p>
+  <div class="mantra-instrucoes">
+    <p>Use antes de rituais de prosperidade, antes de assinar documentos importantes ou iniciar novos projetos. Repita os dois últimos versos como afirmação diária pela manhã.</p>
+  </div>
+  <div class="rodape" style="left:22mm;right:18mm"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">5</span></div>
+</div>
+
+<!-- CONEXÃO E ENCERRAMENTO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌿 Terra — A Força que Sustenta</span></div>
+  <h2>Conexão com a Terra sem Sair do Apartamento</h2>
+  <ul>
+    <li>Andar descalça em casa com intenção — o chão, mesmo de porcelanato, conduz.</li>
+    <li>Passar as mãos na terra de um vaso com presença e respiração consciente.</li>
+    <li>Comer com atenção — a alimentação é o ato mágico mais Terra que existe.</li>
+    <li>Segurar pedras e cristais — uma pedra do parque serve tanto quanto um cristal caro.</li>
+    <li>Jardim vertical ou horta de temperos no peitoril da janela.</li>
+  </ul>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>O Símbolo da Terra</h2>
+  <h3>Triângulo Invertido com Linha Horizontal ⊽</h3>
+  <p>Representa o elemento Terra como receptáculo — o que recebe, sustenta e transforma. Trace no pé da cama antes de dormir para ancoragem. Desenhe na primeira página do diário para enraizar seus escritos.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>Para Lembrar</h2>
+  <div class="caixa-destaque">
+    <p>A Terra te lembra que você <strong>merece ocupar espaço</strong>. Que suas necessidades materiais são sagradas. Que construir devagar, com consistência, é a forma mais poderosa de magia que existe.</p>
+    <p>Honre sua Terra. Coloque raízes.</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual</span><span class="rodape-num">6</span></div>
+</div>
+
+<!-- ENCERRAMENTO -->
+<div class="pagina pagina-enc">
+  <div class="enc-simbolo">🌿</div>
+  <h2 class="enc-titulo">Você é o Solo Fértil</h2>
+  <p class="enc-texto">A magia da Terra não está nas pedras, não está nos rituais, não está nas ervas. Está em você. Na sua capacidade de persistir quando o vento sopra contra. No seu corpo que sabe o que precisa. Na sua sabedoria de saber quando plantar e quando esperar a colheita.</p>
+  <p class="enc-frase"><em>"Tudo que você deseja já existe como semente.<br>A terra que você é sabe exatamente como fazer germinar."</em></p>
+  <div class="enc-divider"></div>
+  <p class="enc-texto">Plante com intenção.<br>Nutra com presença.<br>Confie na colheita.</p>
+  <div class="enc-divider"></div>
+  <p class="enc-marca">Guilda da Fonte</p>
+  <p class="enc-wpp">Dúvidas? WhatsApp (62) 99203-8987</p>
+  <div class="rodape" style="left:24mm;right:24mm"><span class="rodape-marca">Guilda da Fonte · Guia de Magia Atual · Box dos 4 Elementos</span><span class="rodape-num">7</span></div>
+</div>
+
+</body>
+</html>
