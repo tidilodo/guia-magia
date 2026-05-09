@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Processando pagamento — Guilda da Fonte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/style/main.css" />
+  <style>
+    body { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse at 50% 0%, #2a1a0e 0%, #0a0608 70%); }
+    .card { background: var(--medio); border: 1px solid var(--borda); border-radius: 16px; padding: 56px 48px; max-width: 480px; width: 90%; text-align: center; }
+    .simbolo { font-size: 3rem; margin-bottom: 24px; }
+    .titulo { font-family: var(--serif2); font-size: 1.8rem; color: var(--creme); font-weight: 400; margin-bottom: 16px; }
+    .texto { font-size: 0.95rem; color: var(--texto); line-height: 1.8; margin-bottom: 28px; }
+    .btn { display: inline-block; background: linear-gradient(135deg, #b8832e, var(--dourado2)); color: var(--preto); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px; border-radius: 3px; border: none; cursor: pointer; }
+    .wpp { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-size: 0.82rem; color: var(--suave); }
+    .wpp a { color: var(--dourado); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="simbolo">⏳</div>
+    <h1 class="titulo">Verificando pagamento…</h1>
+    <p class="texto">Aguarde enquanto confirmamos o seu pagamento. Isso leva apenas alguns segundos.</p>
+    <p class="texto" id="status-msg" style="color:var(--suave);font-size:0.85rem">Verificando…</p>
+    <p class="wpp">Dúvidas? <a href="https://wa.me/5562992038987" target="_blank">WhatsApp (62) 99203-8987</a></p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('status') || params.get('collection_status');
+    const msg = document.getElementById('status-msg');
+
+    if (status === 'approved') {
+      document.querySelector('.simbolo').textContent = '✦';
+      document.querySelector('.titulo').textContent = 'Pagamento confirmado!';
+      document.querySelector('.texto').textContent = 'Seus PDFs foram enviados para o seu email. Verifique também a caixa de spam.';
+      msg.textContent = 'Redirecionando…';
+      setTimeout(() => window.location.href = '/sucesso.html', 2000);
+    } else if (status === 'pending') {
+      document.querySelector('.simbolo').textContent = '⏳';
+      document.querySelector('.titulo').textContent = 'Pagamento em análise';
+      document.querySelector('.texto').textContent = 'Seu pagamento está sendo processado. Você receberá os PDFs por email assim que for confirmado.';
+      msg.textContent = '';
+    } else if (status === 'rejected' || status === 'failure') {
+      document.querySelector('.simbolo').textContent = '✕';
+      document.querySelector('.titulo').textContent = 'Pagamento não aprovado';
+      document.querySelector('.texto').textContent = 'Houve um problema com o pagamento. Tente novamente ou entre em contato.';
+      msg.innerHTML = '<a href="/" style="color:var(--dourado)">← Tentar novamente</a>';
+    } else {
+      msg.textContent = 'Se o pagamento foi aprovado, você receberá os PDFs em breve por email.';
+    }
+  </script>
+</body>
+</html>
