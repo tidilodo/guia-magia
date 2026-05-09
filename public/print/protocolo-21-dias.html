@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Protocolo 21 Dias — Guilda da Fonte</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+:root{--preto:#0a0608;--medio:#1a1015;--caixa:#1e1519;--borda:#2e2028;--dourado:#c9913a;--dourado2:#e8b96a;--creme:#f5ede0;--texto:#d4c4b0;--suave:#8a7a6a;--elem:#7c5cbf;--elem2:#b09de0;--fogo:#e85d2a;--agua:#3a7abf;--terra:#6b8c3a;--ar:#a08cc8;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#2a2a2a;font-family:'EB Garamond',Georgia,serif;color:var(--texto);}
+.pagina{width:210mm;min-height:297mm;background:var(--preto);margin:0 auto 24px;padding:20mm 18mm 20mm 22mm;position:relative;border-left:3px solid var(--elem);box-shadow:0 4px 32px rgba(0,0,0,0.5);page-break-after:always;}
+.pagina:last-child{page-break-after:auto;}
+.capa{border-left:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(160deg,#130a1e 0%,#0a0608 60%);padding:24mm 18mm;}
+.capa::before{content:'';position:absolute;inset:0;border:2px solid rgba(124,92,191,0.2);margin:12mm;pointer-events:none;}
+.capa-ornamento{font-size:11pt;letter-spacing:12px;color:var(--elem);margin-bottom:20mm;opacity:0.6;}
+.capa-simbolo{font-size:60pt;margin-bottom:8mm;line-height:1;}
+.capa-badge{font-family:'Cinzel',serif;font-size:8pt;letter-spacing:4px;text-transform:uppercase;color:var(--elem);background:rgba(124,92,191,0.1);border:1px solid rgba(124,92,191,0.3);padding:4px 16px;border-radius:20px;margin-bottom:8mm;}
+.capa-titulo{font-family:'Cinzel Decorative',serif;font-size:26pt;font-weight:700;color:var(--creme);line-height:1.2;margin-bottom:4mm;}
+.capa-sub{font-family:'Cinzel Decorative',serif;font-size:13pt;font-weight:400;color:var(--elem2);margin-bottom:16mm;}
+.capa-divider{width:60mm;height:1px;background:linear-gradient(90deg,transparent,var(--elem),transparent);margin:0 auto 16mm;}
+.capa-serie{font-family:'Cinzel',serif;font-size:10pt;letter-spacing:3px;text-transform:uppercase;color:var(--suave);margin-bottom:4mm;}
+.capa-marca{font-family:'Cinzel Decorative',serif;font-size:13pt;color:var(--dourado2);}
+.capa-rodape{position:absolute;bottom:18mm;left:0;right:0;text-align:center;font-family:'Cinzel',serif;font-size:9pt;letter-spacing:3px;color:var(--suave);text-transform:uppercase;}
+.cab{display:flex;justify-content:space-between;align-items:center;margin-bottom:10mm;padding-bottom:3mm;border-bottom:1px solid var(--borda);}
+.cab-marca{font-family:'Cinzel',serif;font-size:9pt;letter-spacing:3px;text-transform:uppercase;color:var(--suave);}
+.cab-elem{font-family:'Cinzel',serif;font-size:9pt;letter-spacing:2px;color:var(--elem);text-transform:uppercase;}
+h1{font-family:'Cinzel Decorative',serif;font-size:22pt;font-weight:700;color:var(--creme);line-height:1.3;margin-bottom:6mm;margin-top:8mm;}
+h2{font-family:'Cinzel Decorative',serif;font-size:15pt;font-weight:400;color:var(--elem2);line-height:1.4;margin-bottom:5mm;margin-top:8mm;padding-bottom:2mm;border-bottom:1px solid rgba(124,92,191,0.25);}
+h3{font-family:'Cinzel',serif;font-size:11pt;font-weight:600;color:var(--elem);margin-bottom:3mm;margin-top:5mm;letter-spacing:1px;}
+p{font-size:12.5pt;line-height:1.82;margin-bottom:3.5mm;color:var(--texto);}
+strong{color:var(--creme);font-weight:500;}
+em{color:var(--dourado2);font-style:italic;}
+ul,ol{padding-left:6mm;margin-bottom:4mm;}
+li{font-size:12.5pt;line-height:1.75;margin-bottom:2mm;color:var(--texto);}
+.citacao{background:var(--caixa);border-left:3px solid var(--elem);padding:4mm 5mm;margin:4mm 0;border-radius:2px;font-style:italic;font-size:12pt;color:var(--dourado2);line-height:1.8;}
+.divisor{text-align:center;color:var(--elem);font-size:10pt;letter-spacing:8px;margin:5mm 0;opacity:0.5;}
+.semana-header{background:linear-gradient(135deg,rgba(124,92,191,0.15),rgba(124,92,191,0.05));border:1px solid rgba(124,92,191,0.3);border-radius:8px;padding:5mm 6mm;margin:6mm 0;}
+.semana-num{font-family:'Cinzel',serif;font-size:8pt;letter-spacing:4px;text-transform:uppercase;color:var(--elem);margin-bottom:2mm;}
+.semana-titulo{font-family:'Cinzel Decorative',serif;font-size:14pt;color:var(--creme);margin-bottom:2mm;}
+.semana-sub{font-size:11pt;color:var(--suave);font-style:italic;}
+.dia{border-radius:6px;padding:4mm 5mm;margin:3mm 0;border:1px solid var(--borda);background:rgba(255,255,255,0.01);}
+.dia-header{display:flex;align-items:center;gap:8px;margin-bottom:3mm;}
+.dia-num{font-family:'Cinzel',serif;font-size:8pt;letter-spacing:3px;text-transform:uppercase;color:var(--suave);}
+.dia-titulo{font-family:'Cinzel',serif;font-size:11pt;font-weight:600;color:var(--creme);}
+.dia-elem{font-size:9pt;padding:2px 8px;border-radius:10px;font-family:'Cinzel',serif;letter-spacing:1px;}
+.dia-elem.fogo{background:rgba(232,93,42,0.15);color:var(--fogo);}
+.dia-elem.agua{background:rgba(58,122,191,0.15);color:var(--agua);}
+.dia-elem.terra{background:rgba(107,140,58,0.15);color:var(--terra);}
+.dia-elem.ar{background:rgba(160,140,200,0.15);color:var(--ar);}
+.dia-elem.todos{background:rgba(201,145,58,0.15);color:var(--dourado2);}
+.dia-pratica{font-size:12pt;line-height:1.75;color:var(--texto);margin-bottom:2mm;}
+.dia-escrita{font-size:11.5pt;color:var(--suave);font-style:italic;margin-bottom:2mm;padding-left:3mm;border-left:2px solid var(--borda);}
+.dia-afirmacao{font-size:11pt;color:var(--dourado2);font-style:italic;margin-top:2mm;}
+.pagina-enc{border-left:none;background:linear-gradient(160deg,#130a1e 0%,#0a0608 60%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24mm;}
+.pagina-enc::before{content:'';position:absolute;inset:12mm;border:1px solid rgba(124,92,191,0.15);pointer-events:none;}
+.rodape{position:absolute;bottom:10mm;left:22mm;right:18mm;display:flex;justify-content:space-between;align-items:center;}
+.rodape-marca{font-family:'Cinzel',serif;font-size:8pt;letter-spacing:2px;color:var(--suave);text-transform:uppercase;}
+.rodape-num{font-family:'Cinzel',serif;font-size:8pt;color:var(--elem);}
+@media print{*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}body{background:none;}.pagina{margin:0;box-shadow:none;}.btn-imprimir{display:none;}}
+.btn-imprimir{position:fixed;top:20px;right:20px;background:#7c5cbf;color:#fff;border:none;padding:12px 24px;border-radius:4px;cursor:pointer;font-family:sans-serif;font-size:14px;font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,0.4);z-index:999;}
+</style>
+</head>
+<body>
+<button class="btn-imprimir" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+
+<!-- CAPA -->
+<div class="pagina capa">
+  <p class="capa-ornamento">◆ &nbsp; ◆ &nbsp; ◆</p>
+  <div class="capa-simbolo">✦</div>
+  <p class="capa-badge">✦ Bônus Exclusivo — Box Completa</p>
+  <h1 class="capa-titulo">Protocolo<br>21 Dias</h1>
+  <p class="capa-sub">Jornada pelos 4 Elementos</p>
+  <div class="capa-divider"></div>
+  <p class="capa-serie">Prática diária · 10 a 15 minutos</p>
+  <p class="capa-marca">Guilda da Fonte</p>
+  <p class="capa-rodape">Guia de Magia Atual · Box dos 4 Elementos</p>
+</div>
+
+<!-- INTRODUÇÃO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">✦ Protocolo 21 Dias</span></div>
+  <h2>Antes de Começar</h2>
+  <p>Vinte e um dias é o tempo estimado para criar um novo padrão. Mas aqui não se trata de um hábito mecânico — trata-se de criar uma relação. Com você mesma. Com os elementos. Com a prática que já vive em você.</p>
+  <p>Este protocolo tem três semanas:</p>
+  <div class="semana-header" style="margin-bottom:4mm">
+    <p class="semana-num">Semana 1</p><p class="semana-titulo" style="font-size:13pt;margin:0">Acordar</p><p class="semana-sub" style="margin:0">Você se apresenta aos elementos</p>
+  </div>
+  <div class="semana-header" style="margin-bottom:4mm">
+    <p class="semana-num">Semana 2</p><p class="semana-titulo" style="font-size:13pt;margin:0">Aprofundar</p><p class="semana-sub" style="margin:0">Os elementos revelam o que estava escondido</p>
+  </div>
+  <div class="semana-header">
+    <p class="semana-num">Semana 3</p><p class="semana-titulo" style="font-size:13pt;margin:0">Integrar</p><p class="semana-sub" style="margin:0">A prática se torna sua</p>
+  </div>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h3>O que preparar</h3>
+  <ul>
+    <li>Um caderno dedicado a estes 21 dias</li>
+    <li>Uma vela (qualquer cor, qualquer tamanho)</li>
+    <li>Sal grosso e uma tigela pequena</li>
+    <li>Um horário fixo — manhã é ideal, noite também funciona</li>
+  </ul>
+  <p>Se faltar um dia — sem drama. Retome no seguinte. Este protocolo não funciona com perfeição. Funciona com continuidade.</p>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Protocolo 21 Dias</span><span class="rodape-num">2</span></div>
+</div>
+
+<!-- SEMANA 1 -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">✦ Semana 1 — Acordar</span></div>
+  <div class="semana-header"><p class="semana-num">Semana 1 · Dias 1–7</p><p class="semana-titulo">Acordar</p><p class="semana-sub">Você se apresenta aos elementos</p></div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 1</span><span class="dia-titulo">Fogo: Acender a Primeira Chama</span><span class="dia-elem fogo">Fogo · 10 min</span></div>
+    <p class="dia-pratica">Acenda uma vela. Observe a chama por 5 minutos sem fazer nada. Depois escreva:</p>
+    <p class="dia-escrita">"A chama que eu quero acender em mim agora é _______________."</p>
+    <p class="dia-afirmacao">"Eu tenho permissão para começar. A chama já existe em mim."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 2</span><span class="dia-titulo">Água: O Primeiro Contato</span><span class="dia-elem agua">Água · 10 min</span></div>
+    <p class="dia-pratica">Encha uma tigela com água. Coloque as mãos dentro por 2 minutos. Sinta a temperatura, o peso, a fluidez. Depois escreva:</p>
+    <p class="dia-escrita">"A emoção que eu mais preciso honrar agora é _______________."</p>
+    <p class="dia-afirmacao">"Minhas emoções são inteligência. Eu as ouço com respeito."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 3</span><span class="dia-titulo">Terra: Os Pés no Chão</span><span class="dia-elem terra">Terra · 10 min</span></div>
+    <p class="dia-pratica">Descalce-se. Fique de pé por 3 minutos, sentindo o contato dos pés no chão. Depois escreva:</p>
+    <p class="dia-escrita">"O que me traz de volta para mim mesma é _______________."</p>
+    <p class="dia-afirmacao">"Sou filha da terra. Tenho raiz. Tenho sustentação."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 4</span><span class="dia-titulo">Ar: A Voz Interior</span><span class="dia-elem ar">Ar · 10 min</span></div>
+    <p class="dia-pratica">Sente-se em silêncio. Respire 7 vezes profundamente, atenção apenas no ar. Depois escreva:</p>
+    <p class="dia-escrita">"Se eu pudesse dizer uma verdade sem medo, seria _______________."</p>
+    <p class="dia-afirmacao">"Minha voz tem valor. Minhas palavras criam mundos."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 5</span><span class="dia-titulo">Revisão dos 4 Elementos</span><span class="dia-elem todos">Todos · 15 min</span></div>
+    <p class="dia-pratica">Releia o que escreveu nos dias 1 a 4. Observe sem julgamento. Depois escreva:</p>
+    <p class="dia-escrita">"O elemento que mais me desafia é ___. O que isso me diz sobre mim?"</p>
+    <p class="dia-afirmacao">"Não preciso ser equilibrada em tudo. Preciso ser honesta com o que é."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 6</span><span class="dia-titulo">Fogo: O que Precisa Arder</span><span class="dia-elem fogo">Fogo · 15 min</span></div>
+    <p class="dia-pratica">Acenda vela laranja. Escreva em papel separado algo que não te pertence mais. Rasgue e descarte fora de casa.</p>
+    <p class="dia-afirmacao">"Eu libero o que me pesava. Fico mais leve e mais eu."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 7</span><span class="dia-titulo">Água: Lágrimas são Sagradas</span><span class="dia-elem agua">Água · 15 min</span></div>
+    <p class="dia-pratica">15 minutos em silêncio com música suave se quiser. Permita-se sentir o que estiver presente — sem resistir. Depois escreva:</p>
+    <p class="dia-escrita">"Hoje eu me permiti sentir ___. E foi necessário."</p>
+    <p class="dia-afirmacao">"Sentir fundo não me quebra. Me limpa."</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Protocolo 21 Dias</span><span class="rodape-num">3</span></div>
+</div>
+
+<!-- SEMANA 2 -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">✦ Semana 2 — Aprofundar</span></div>
+  <div class="semana-header"><p class="semana-num">Semana 2 · Dias 8–14</p><p class="semana-titulo">Aprofundar</p><p class="semana-sub">Os elementos revelam o que estava escondido</p></div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 8</span><span class="dia-titulo">Terra: Inventário de Abundância</span><span class="dia-elem terra">Terra · 15 min</span></div>
+    <p class="dia-pratica">Escreva uma lista de tudo que você já tem — inclua o intangível. Mínimo de 20 itens.</p>
+    <p class="dia-afirmacao">"Sou mais rica do que imagino. A abundância já mora em mim."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 9</span><span class="dia-titulo">Ar: O que Você Realmente Pensa</span><span class="dia-elem ar">Ar · 15 min</span></div>
+    <p class="dia-pratica">Escrita livre por 10 minutos — sem parar a caneta, sem reler. Começa com:</p>
+    <p class="dia-escrita">"O que ninguém sabe sobre mim é..."</p>
+    <p class="dia-afirmacao">"Minha mente é um espaço fértil. Meus pensamentos me revelam."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 10</span><span class="dia-titulo">Fogo: A Pergunta Difícil</span><span class="dia-elem fogo">Fogo · 15 min</span></div>
+    <p class="dia-pratica">Acenda uma vela. Escreva a resposta honesta para:</p>
+    <p class="dia-escrita">"O que eu continuo adiando — e por que realmente?"</p>
+    <p class="dia-afirmacao">"Enxergar a verdade é o primeiro passo para mudar."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 11</span><span class="dia-titulo">Água: Cartas que Curam</span><span class="dia-elem agua">Água · 20 min</span></div>
+    <p class="dia-pratica">Escreva uma carta (que não vai enviar) para alguém com pendência emocional. Depois escreva a resposta na voz dessa pessoa, dizendo o que você precisaria ouvir.</p>
+    <p class="dia-afirmacao">"Eu curo o que estiver ao meu alcance. E libero o que não está."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 12</span><span class="dia-titulo">Terra: O Corpo que Fala</span><span class="dia-elem terra">Terra · 15 min</span></div>
+    <p class="dia-pratica">Deite no chão por 5 minutos. Perceba o peso do corpo, o contato com o chão. Depois escreva:</p>
+    <p class="dia-escrita">"Meu corpo está me dizendo _______________."</p>
+    <p class="dia-afirmacao">"Meu corpo é sábio. Eu o escuto e o respeito."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 13</span><span class="dia-titulo">Ar: Intenção que Vira Palavra</span><span class="dia-elem ar">Ar · 15 min</span></div>
+    <p class="dia-pratica">Escreva uma intenção para os próximos 30 dias — no presente, na primeira pessoa, com detalhe sensorial. Leia em voz alta três vezes. Coloque onde você veja todo dia.</p>
+    <p class="dia-afirmacao">"Minhas palavras têm peso. O que declaro, manifesto."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 14</span><span class="dia-titulo">Revisão da Semana 2</span><span class="dia-elem todos">Todos · 20 min</span></div>
+    <p class="dia-pratica">Releia tudo que escreveu nessa semana. Observe os padrões. Escreva:</p>
+    <p class="dia-escrita">"Esta semana eu descobri sobre mim que _______________."</p>
+    <p class="dia-afirmacao">"Autoconhecimento não assusta — liberta."</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Protocolo 21 Dias</span><span class="rodape-num">4</span></div>
+</div>
+
+<!-- SEMANA 3 + ENCERRAMENTO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">✦ Semana 3 — Integrar</span></div>
+  <div class="semana-header"><p class="semana-num">Semana 3 · Dias 15–21</p><p class="semana-titulo">Integrar</p><p class="semana-sub">A prática se torna sua</p></div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 15</span><span class="dia-titulo">Fogo: Ritual da Manhã</span><span class="dia-elem fogo">Fogo · 10 min</span></div>
+    <p class="dia-pratica">Crie seu próprio ritual de manhã com o fogo. Escreva o ritual que criou.</p>
+    <p class="dia-afirmacao">"Começo o dia com intenção. Sou a autora da minha manhã."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 16</span><span class="dia-titulo">Água: Ritual do Banho</span><span class="dia-elem agua">Água · 20 min</span></div>
+    <p class="dia-pratica">Antes de entrar no banho, defina intenção: o que quer que a água leve? Durante, visualize a água carregando o que não precisa mais. Ao sair, sinta-se renovada conscientemente.</p>
+    <p class="dia-afirmacao">"Me limpo em todos os níveis. Saio do banho mais eu."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 17</span><span class="dia-titulo">Terra: Ritual da Gratidão</span><span class="dia-elem terra">Terra · 10 min</span></div>
+    <p class="dia-pratica">Antes de dormir: escreva 5 coisas de gratidão, sendo pelo menos 2 sobre você mesma — pelo ser, não pela conquista.</p>
+    <p class="dia-afirmacao">"Adormeço em paz. Sou suficiente exatamente como sou."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 18</span><span class="dia-titulo">Ar: Ritual da Intenção Semanal</span><span class="dia-elem ar">Ar · 15 min</span></div>
+    <p class="dia-pratica">Crie um ritual de início de semana com o Ar: uma intenção, uma palavra-guia ou pergunta para carregar nos dias. Pratique hoje.</p>
+    <p class="dia-afirmacao">"Cada semana é uma página nova. Eu escolho o que escrever."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 19</span><span class="dia-titulo">Todos: O Altar Pessoal</span><span class="dia-elem todos">Todos · 20 min</span></div>
+    <p class="dia-pratica">Monte um altar com um objeto para cada elemento. Sente-se à frente dele e simplesmente esteja presente por 10 minutos.</p>
+    <p class="dia-afirmacao">"Eu tenho um espaço sagrado. Sou minha própria sacerdotisa."</p>
+  </div>
+
+  <div class="dia">
+    <div class="dia-header"><span class="dia-num">Dia 20</span><span class="dia-titulo">Revisão: Os 3 Presentes</span><span class="dia-elem todos">Todos · 20 min</span></div>
+    <p class="dia-pratica">Escreva as respostas para estas três perguntas:</p>
+    <p class="dia-escrita">1. "O maior presente que este protocolo me deu foi ___."<br>2. "A prática que quero continuar é ___."<br>3. "Uma coisa que mudou em mim foi ___."</p>
+    <p class="dia-afirmacao">"Eu sou a prova do meu próprio crescimento."</p>
+  </div>
+
+  <div class="dia" style="border-color:var(--elem);background:rgba(124,92,191,0.04)">
+    <div class="dia-header"><span class="dia-num">Dia 21</span><span class="dia-titulo" style="color:var(--elem2)">✦ O Encerramento que é uma Abertura</span><span class="dia-elem todos">Todos · 30 min</span></div>
+    <p class="dia-pratica">Acenda vela + copo d'água + pedra ou folha + abra janela. Releia o que escreveu no Dia 1. Compare com quem você é hoje. Escreva uma carta para você mesma — a ser lida daqui a 6 meses. Feche os olhos, respire 7 vezes e diga em voz alta:</p>
+    <div class="citacao">"Eu honro os 21 dias que vivi. Honro cada elemento que encontrei. Honro a mulher que sou e a que estou me tornando. A prática não termina aqui — ela continua em mim."</div>
+    <p class="dia-afirmacao">"Eu sou o começo e o depois. Sou o ritual e o resultado. Sou eu — e isso é suficiente."</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Protocolo 21 Dias</span><span class="rodape-num">5</span></div>
+</div>
+
+<!-- ENCERRAMENTO -->
+<div class="pagina pagina-enc">
+  <div style="font-size:44pt;margin-bottom:8mm">✦</div>
+  <div style="font-family:'Cinzel Decorative',serif;font-size:18pt;color:var(--creme);font-weight:400;margin-bottom:6mm;line-height:1.4">Parabéns.<br>Você fez o que a maioria não faz.</div>
+  <p style="font-size:13pt;color:var(--texto);line-height:1.85;max-width:130mm;margin-bottom:10mm">Não pela perfeição — talvez você tenha faltado alguns dias, feito adaptações, modificado rituais. Tudo isso é parte do caminho.</p>
+  <p style="font-size:13pt;color:var(--texto);line-height:1.85;max-width:130mm;margin-bottom:10mm">Os quatro elementos agora são mais familiares para você. O Fogo já sabe o seu nome. A Água reconhece o seu toque. A Terra guarda as suas raízes. O Ar carrega a sua voz.</p>
+  <p style="font-size:12pt;color:var(--dourado2);font-style:italic;margin-bottom:12mm;max-width:120mm;text-align:center"><em>"Isso não vai embora."</em></p>
+  <div style="width:40mm;height:1px;background:linear-gradient(90deg,transparent,var(--elem),transparent);margin:0 auto 10mm;"></div>
+  <p style="font-family:'Cinzel Decorative',serif;font-size:13pt;color:var(--dourado2);margin-bottom:4mm">Guilda da Fonte</p>
+  <p style="font-family:'Cinzel',serif;font-size:10pt;color:var(--suave);letter-spacing:1px">Dúvidas? WhatsApp (62) 99203-8987</p>
+  <div class="rodape" style="left:24mm;right:24mm"><span class="rodape-marca">Guilda da Fonte · Protocolo 21 Dias · Box Completa</span><span class="rodape-num">6</span></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Scripts de Meditação Guiada — Guilda da Fonte</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+:root{--preto:#0a0608;--medio:#1a1015;--caixa:#1e1519;--borda:#2e2028;--dourado:#c9913a;--dourado2:#e8b96a;--creme:#f5ede0;--texto:#d4c4b0;--suave:#8a7a6a;--elem:#5a8a8a;--elem2:#90c4c4;--fogo:#e85d2a;--agua:#3a7abf;--terra:#6b8c3a;--ar:#a08cc8;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#2a2a2a;font-family:'EB Garamond',Georgia,serif;color:var(--texto);}
+.pagina{width:210mm;min-height:297mm;background:var(--preto);margin:0 auto 24px;padding:20mm 18mm 20mm 22mm;position:relative;border-left:3px solid var(--elem);box-shadow:0 4px 32px rgba(0,0,0,0.5);page-break-after:always;}
+.pagina:last-child{page-break-after:auto;}
+.capa{border-left:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(160deg,#051212 0%,#0a0608 60%);padding:24mm 18mm;}
+.capa::before{content:'';position:absolute;inset:0;border:2px solid rgba(90,138,138,0.2);margin:12mm;pointer-events:none;}
+.capa-badge{font-family:'Cinzel',serif;font-size:8pt;letter-spacing:4px;text-transform:uppercase;color:var(--elem);background:rgba(90,138,138,0.1);border:1px solid rgba(90,138,138,0.3);padding:4px 16px;border-radius:20px;margin-bottom:8mm;}
+.capa-titulo{font-family:'Cinzel Decorative',serif;font-size:24pt;font-weight:700;color:var(--creme);line-height:1.2;margin-bottom:4mm;}
+.capa-sub{font-family:'Cinzel Decorative',serif;font-size:13pt;font-weight:400;color:var(--elem2);margin-bottom:16mm;}
+.capa-divider{width:60mm;height:1px;background:linear-gradient(90deg,transparent,var(--elem),transparent);margin:0 auto 16mm;}
+.capa-serie{font-family:'Cinzel',serif;font-size:10pt;letter-spacing:3px;text-transform:uppercase;color:var(--suave);margin-bottom:4mm;}
+.capa-marca{font-family:'Cinzel Decorative',serif;font-size:13pt;color:var(--dourado2);}
+.capa-rodape{position:absolute;bottom:18mm;left:0;right:0;text-align:center;font-family:'Cinzel',serif;font-size:9pt;letter-spacing:3px;color:var(--suave);text-transform:uppercase;}
+.cab{display:flex;justify-content:space-between;align-items:center;margin-bottom:8mm;padding-bottom:3mm;border-bottom:1px solid var(--borda);}
+.cab-marca{font-family:'Cinzel',serif;font-size:9pt;letter-spacing:3px;text-transform:uppercase;color:var(--suave);}
+.cab-elem{font-family:'Cinzel',serif;font-size:9pt;letter-spacing:2px;color:var(--elem);text-transform:uppercase;}
+h2{font-family:'Cinzel Decorative',serif;font-size:15pt;font-weight:400;line-height:1.4;margin-bottom:4mm;margin-top:6mm;padding-bottom:2mm;border-bottom:1px solid rgba(90,138,138,0.25);}
+h3{font-family:'Cinzel',serif;font-size:11pt;font-weight:600;margin-bottom:3mm;margin-top:5mm;letter-spacing:1px;}
+p{font-size:12.5pt;line-height:1.82;margin-bottom:3.5mm;color:var(--texto);}
+strong{color:var(--creme);font-weight:500;}
+em{color:var(--dourado2);font-style:italic;}
+.divisor{text-align:center;font-size:10pt;letter-spacing:8px;margin:5mm 0;opacity:0.5;}
+
+/* Header de meditação */
+.med-header{border-radius:8px;padding:5mm 6mm;margin:4mm 0 6mm;}
+.med-header.fogo{background:rgba(232,93,42,0.06);border:1px solid rgba(232,93,42,0.25);}
+.med-header.agua{background:rgba(58,122,191,0.06);border:1px solid rgba(58,122,191,0.25);}
+.med-header.terra{background:rgba(107,140,58,0.06);border:1px solid rgba(107,140,58,0.25);}
+.med-header.ar{background:rgba(160,140,200,0.06);border:1px solid rgba(160,140,200,0.25);}
+.med-num{font-family:'Cinzel',serif;font-size:7pt;letter-spacing:4px;text-transform:uppercase;margin-bottom:2mm;}
+.med-titulo{font-family:'Cinzel Decorative',serif;font-size:14pt;font-weight:400;margin-bottom:2mm;}
+.med-intencao{font-size:11pt;color:var(--suave);font-style:italic;}
+.fogo .med-num,.fogo .med-titulo{color:var(--fogo);}
+.agua .med-num,.agua .med-titulo{color:var(--agua);}
+.terra .med-num,.terra .med-titulo{color:var(--terra);}
+.ar .med-num,.ar .med-titulo{color:var(--ar);}
+
+/* Blocos de script */
+.bloco-script{margin:4mm 0;}
+.bloco-label{font-family:'Cinzel',serif;font-size:7pt;letter-spacing:3px;text-transform:uppercase;color:var(--suave);margin-bottom:3mm;padding-bottom:1mm;border-bottom:1px solid var(--borda);}
+.linha-voz{font-size:12pt;line-height:1.9;color:var(--texto);margin-bottom:1mm;}
+.linha-pausa{font-family:'Cinzel',serif;font-size:9pt;color:var(--suave);font-style:italic;letter-spacing:1px;margin:1mm 0 1mm 4mm;}
+.afirmacao-box{background:var(--caixa);border:1px solid var(--borda);border-radius:6px;padding:4mm 5mm;margin:4mm 0;}
+.afirmacao-label{font-family:'Cinzel',serif;font-size:7pt;letter-spacing:3px;text-transform:uppercase;margin-bottom:3mm;}
+.fogo .afirmacao-label{color:var(--fogo);}
+.agua .afirmacao-label{color:var(--agua);}
+.terra .afirmacao-label{color:var(--terra);}
+.ar .afirmacao-label{color:var(--ar);}
+.afirmacao-texto{font-size:12pt;line-height:1.8;font-style:italic;color:var(--dourado2);}
+
+.pagina-enc{border-left:none;background:linear-gradient(160deg,#051212 0%,#0a0608 60%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24mm;}
+.pagina-enc::before{content:'';position:absolute;inset:12mm;border:1px solid rgba(90,138,138,0.15);pointer-events:none;}
+.rodape{position:absolute;bottom:10mm;left:22mm;right:18mm;display:flex;justify-content:space-between;align-items:center;}
+.rodape-marca{font-family:'Cinzel',serif;font-size:8pt;letter-spacing:2px;color:var(--suave);text-transform:uppercase;}
+.rodape-num{font-family:'Cinzel',serif;font-size:8pt;color:var(--elem);}
+@media print{*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}body{background:none;}.pagina{margin:0;box-shadow:none;}.btn-imprimir{display:none;}}
+.btn-imprimir{position:fixed;top:20px;right:20px;background:var(--elem);color:#fff;border:none;padding:12px 24px;border-radius:4px;cursor:pointer;font-family:sans-serif;font-size:14px;font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,0.4);z-index:999;}
+</style>
+</head>
+<body>
+<button class="btn-imprimir" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+
+<!-- CAPA -->
+<div class="pagina capa">
+  <p style="font-size:11pt;letter-spacing:12px;color:var(--elem);margin-bottom:20mm;opacity:0.6">◆ &nbsp; ◆ &nbsp; ◆</p>
+  <div style="font-size:60pt;margin-bottom:8mm;line-height:1">🎧</div>
+  <p class="capa-badge">✦ Bônus Exclusivo — Box Completa</p>
+  <h1 class="capa-titulo">Meditações<br>Guiadas</h1>
+  <p class="capa-sub">Os 4 Elementos</p>
+  <div class="capa-divider"></div>
+  <p class="capa-serie">Scripts para gravar ou narrar ao vivo</p>
+  <p class="capa-marca">Guilda da Fonte</p>
+  <p class="capa-rodape">Guia de Magia Atual · Box dos 4 Elementos</p>
+</div>
+
+<!-- INSTRUÇÕES -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🎧 Meditações Guiadas</span></div>
+  <h2 style="color:var(--elem2)">Como Usar Estes Scripts</h2>
+  <p>Você recebeu os scripts completos das 4 meditações guiadas — uma para cada elemento. Eles podem ser usados de três formas:</p>
+  <p><strong>1. Gravar em áudio</strong> — Leia em voz calma e grave no celular. Use como trilha sonora das suas práticas. Escuta própria tem um poder especial.</p>
+  <p><strong>2. Ler em voz alta enquanto pratica</strong> — Leia o script em voz alta como parte do ritual. Sua própria voz é o instrumento.</p>
+  <p><strong>3. Pedir para alguém narrar</strong> — Uma pessoa com voz calma pode narrar enquanto você pratica. Funciona bem em círculos ou práticas em dupla.</p>
+  <div class="divisor" style="color:var(--elem)">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h3 style="color:var(--elem)">Notação do Script</h3>
+  <p><strong>[PAUSA 3s]</strong> — pausa curta. Respire. Deixe a frase pousar.</p>
+  <p><strong>[PAUSA 5s]</strong> — pausa média. Tempo para sentir.</p>
+  <p><strong>[PAUSA 8s]</strong> — pausa longa. Tempo para visualizar completamente.</p>
+  <p>Duração estimada de cada meditação: <strong>8 a 10 minutos</strong> em ritmo calmo.</p>
+  <div class="divisor" style="color:var(--elem)">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h3 style="color:var(--elem)">Músicas Sugeridas por Elemento</h3>
+  <p>🔥 <strong style="color:var(--fogo)">Fogo</strong> — percussão suave, tambores tribais em volume baixo</p>
+  <p>💧 <strong style="color:var(--agua)">Água</strong> — sons de rio ou chuva leve, cuenco tibetano</p>
+  <p>🌿 <strong style="color:var(--terra)">Terra</strong> — flautas nativas, vento nas folhas</p>
+  <p>🌬 <strong style="color:var(--ar)">Ar</strong> — crystal singing bowls, silêncio com leve vento</p>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Meditações Guiadas</span><span class="rodape-num">2</span></div>
+</div>
+
+<!-- MEDITAÇÃO FOGO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🔥 Meditação 1 — Fogo</span></div>
+  <div class="med-header fogo">
+    <p class="med-num">Meditação 1</p>
+    <p class="med-titulo">A Chama Interior</p>
+    <p class="med-intencao">Transformar medo em coragem · Travamentos em movimento</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Introdução — entrar no estado meditativo</p>
+    <p class="linha-voz">Encontre uma posição confortável. Pode ser sentada, pode ser deitada.</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+    <p class="linha-voz">Feche os olhos com gentileza. Respire fundo pelo nariz.</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+    <p class="linha-voz">E solte lentamente pela boca. Mais uma vez. Inspire.</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+    <p class="linha-voz">Expire. Deixe seus ombros descerem. Deixe a mandíbula relaxar.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Você não precisa fazer nada agora. Neste momento, sua única tarefa é estar aqui.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Visualização — a chama interior</p>
+    <p class="linha-voz">Imagine que você está em um lugar escuro. Não assustador — aconchegante. Como o interior de um quarto em noite de chuva.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">E então você percebe uma faísca. Bem aqui. No centro do seu peito. Ela sempre esteve lá.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Com a próxima respiração, você sopra suavemente nessa faísca — para alimentá-la. Ela cresce um pouco.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Observe as cores dessa chama. Qual é a cor da sua chama?</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+    <p class="linha-voz">Nessa luz, você começa a enxergar os medos que carrega. Não como monstros — como sombras. E você tem uma chama. Você tem luz.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Com cada respiração, as sombras se transformam. O medo de falhar se torna coragem de tentar. O travamento se torna movimento.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Você é feita de fogo também. De estrela. De início.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Encerramento</p>
+    <p class="linha-voz">Muito suavemente, traga sua atenção de volta. Sinta o peso do seu corpo. Wiggle os dedos dos pés. Abra os olhos lentamente.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Leve a mão ao peito. Sinta o calor ali. E diga em voz alta:</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+  </div>
+
+  <div class="afirmacao-box fogo">
+    <p class="afirmacao-label">Afirmação Final — lida em voz alta</p>
+    <p class="afirmacao-texto">"Eu sou a chama que não se apaga. Transformo medo em coragem. Transformo dúvida em movimento. O fogo em mim é real, é meu, e está aceso. Hoje eu ajo a partir dessa chama."<br><br>Que assim seja.</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Meditações Guiadas</span><span class="rodape-num">3</span></div>
+</div>
+
+<!-- MEDITAÇÃO ÁGUA -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">💧 Meditação 2 — Água</span></div>
+  <div class="med-header agua">
+    <p class="med-num">Meditação 2</p>
+    <p class="med-titulo">O Rio da Cura</p>
+    <p class="med-intencao">Soltar peso emocional · Revelar a leveza que sempre esteve lá</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Introdução</p>
+    <p class="linha-voz">Encontre sua posição confortável. Feche os olhos. Expire pela boca com um suave suspiro.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Permita que sua respiração encontre seu próprio ritmo natural. Como uma maré que sobe e desce sozinha.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Visualização — o rio da cura</p>
+    <p class="linha-voz">Imagine que você está chegando à beira de um rio. Calmo, de águas cristalinas. O som da água é o único som.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Você senta na margem e coloca os pés dentro da água. A água está fresca — como um alívio. Ela acolheu seus pés sem julgamento.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">E você decide entrar mais. Devagar. Até a água chegar aos joelhos. Até a cintura. Até você estar completamente dentro do rio.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">A água começa a trabalhar. Ela leva a exaustão dos seus ombros.</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+    <p class="linha-voz">Ela leva a mágoa que ficou presa no peito. A preocupação que morava na barriga.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">E à medida que ela leva, você fica mais leve. Embaixo de cada camada removida — leveza. Clareza. Você.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+    <p class="linha-voz">Você sai do rio. Limpa. Leve. Renovada.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Encerramento</p>
+    <p class="linha-voz">Traga a atenção de volta. Respire fundo uma vez. Mova os dedos suavemente. Abra os olhos. Leve as mãos ao coração. E diga em voz alta:</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+  </div>
+
+  <div class="afirmacao-box agua">
+    <p class="afirmacao-label">Afirmação Final — lida em voz alta</p>
+    <p class="afirmacao-texto">"Sou feita de água — fluio, me renovo, me curo. Libero o que não é mais meu. Abaixo de tudo o que carregava, encontro minha leveza. Sou limpa. Sou livre. Sou grata. A cura já começou."<br><br>Que assim seja.</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Meditações Guiadas</span><span class="rodape-num">4</span></div>
+</div>
+
+<!-- MEDITAÇÃO TERRA -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌿 Meditação 3 — Terra</span></div>
+  <div class="med-header terra">
+    <p class="med-num">Meditação 3</p>
+    <p class="med-titulo">Raízes Profundas</p>
+    <p class="med-intencao">Ancorar · Receber abundância · Sentir o corpo cheio e estável</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Introdução</p>
+    <p class="linha-voz">Sente-se com os dois pés no chão. Se puder, tire os sapatos. Endireite levemente a coluna — não rígida, apenas viva.</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+    <p class="linha-voz">Respire fundo, deixando a barriga expandir. Expire devagar. Sinta o peso do seu corpo. Algo sempre te sustentou.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Visualização — raízes profundas</p>
+    <p class="linha-voz">Imagine que você está de pé em um lugar ao ar livre. O chão debaixo dos seus pés é terra escura e úmida — cheiro de chuva recente, cheiro de vida.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">E então você percebe: a terra está respondendo ao toque dos seus pés. Como se ela te reconhecesse.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Das solas dos seus pés, começam a nascer raízes. Finas no começo. Mas elas vão crescendo. Descendo. Passando pelas pedras. Chegando a lugares onde nunca houve seca.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+    <p class="linha-voz">E de lá de baixo, pelas suas raízes, começa a subir algo. Nutrição pura. Subindo pelos pés, pelas canelas, pela barriga, pelo peito — seu corpo inteiro sendo alimentado pela terra.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+    <p class="linha-voz">Você pertence a este planeta. Você tem lugar aqui. Você tem raízes que ninguém pode arrancar.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Encerramento</p>
+    <p class="linha-voz">As raízes não vão embora quando você abre os olhos. Elas continuam com você. Pressione suavemente os pés no chão. Coloque as palmas das mãos sobre as coxas. Sinta o calor. E diga em voz alta:</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+  </div>
+
+  <div class="afirmacao-box terra">
+    <p class="afirmacao-label">Afirmação Final — lida em voz alta</p>
+    <p class="afirmacao-texto">"Sou filha da terra. Tenho raízes. Tenho lugar. Tenho sustentação. A abundância sobe de dentro da terra para mim. Meu corpo é lar. Meu chão é seguro. Estou ancorada, estou plena, estou grata."<br><br>Que assim seja.</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Meditações Guiadas</span><span class="rodape-num">5</span></div>
+</div>
+
+<!-- MEDITAÇÃO AR -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌬 Meditação 4 — Ar</span></div>
+  <div class="med-header ar">
+    <p class="med-num">Meditação 4</p>
+    <p class="med-titulo">A Voz que Cria</p>
+    <p class="med-intencao">Clareza mental · Liberar pensamentos pesados · Fortalecer a voz interior</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Introdução</p>
+    <p class="linha-voz">Sente-se ou deite-se confortavelmente. Feche os olhos. E apenas respire — não de uma forma especial, apenas o seu jeito.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+    <p class="linha-voz">Perceba como a respiração acontece sem esforço. O ar chega. O ar vai. Você não precisa fazer nada.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Visualização — o campo aberto</p>
+    <p class="linha-voz">Imagine que você está num campo aberto. Enorme. Verde. Com um céu de azul profundo. Você está de pé no centro. E há vento.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Esse vento está carregando coisas. Pensamentos que te pesam. Preocupações que ficaram presas. O vento não pede licença — ele simplesmente pega. E você deixa.</p>
+    <p class="linha-pausa">[PAUSA 5s]</p>
+    <p class="linha-voz">Um pensamento de ansiedade — o vento leva.</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+    <p class="linha-voz">Uma comparação que te diminuiu — o vento leva.</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+    <p class="linha-voz">À medida que o vento carrega o que não é seu, o espaço dentro da sua mente vai ficando mais limpo. Mais silencioso.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+    <p class="linha-voz">Nesse silêncio, a sua voz mais profunda começa a aparecer. Ela nunca gritou. Era difícil ouvi-la porque havia muito barulho. Mas agora... o que essa voz está dizendo?</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+    <p class="linha-voz">Inspire fundo. E ao expirar, projete uma intenção no ar. O que você quer criar? O ar é o mensageiro — ele leva sua intenção para onde ela precisa chegar.</p>
+    <p class="linha-pausa">[PAUSA 8s]</p>
+  </div>
+
+  <div class="bloco-script">
+    <p class="bloco-label">Encerramento</p>
+    <p class="linha-voz">Traga a atenção de volta. Sinta o ar da sala. Respire conscientemente — inspire presente, expire grata. Abra os olhos. Coloque uma mão na garganta — o centro da sua voz. E diga em voz alta:</p>
+    <p class="linha-pausa">[PAUSA 3s]</p>
+  </div>
+
+  <div class="afirmacao-box ar">
+    <p class="afirmacao-label">Afirmação Final — lida em voz alta</p>
+    <p class="afirmacao-texto">"Minha mente é clara. Minha voz é real. O que eu penso e o que eu falo tem poder de criação. Solto o barulho que não era meu. E escuto — finalmente escuto — o que eu mesma tenho a dizer. Minha voz cria. Minha intenção se move. Eu me manifesto."<br><br>Que assim seja.</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Meditações Guiadas</span><span class="rodape-num">6</span></div>
+</div>
+
+<!-- ENCERRAMENTO -->
+<div class="pagina pagina-enc" style="background:linear-gradient(160deg,#051212 0%,#0a0608 60%);">
+  <div style="font-size:44pt;margin-bottom:8mm">🎧</div>
+  <div style="font-family:'Cinzel Decorative',serif;font-size:18pt;color:var(--creme);font-weight:400;margin-bottom:6mm;line-height:1.4">Sua voz é o instrumento<br>mais poderoso que você tem.</div>
+  <p style="font-size:13pt;color:var(--texto);line-height:1.85;max-width:130mm;margin-bottom:10mm">Grave estes scripts. Ouça sua própria voz guiando você. Existe uma magia singular em ser guiada por si mesma.</p>
+  <p style="font-size:12pt;color:var(--elem2);font-style:italic;margin-bottom:12mm;max-width:120mm;text-align:center"><em>"A meditação não te leva para longe de você. Ela te leva mais fundo em você."</em></p>
+  <div style="width:40mm;height:1px;background:linear-gradient(90deg,transparent,var(--elem),transparent);margin:0 auto 10mm;"></div>
+  <p style="font-family:'Cinzel Decorative',serif;font-size:13pt;color:var(--dourado2);margin-bottom:4mm">Guilda da Fonte</p>
+  <p style="font-family:'Cinzel',serif;font-size:10pt;color:var(--suave);letter-spacing:1px">Dúvidas? WhatsApp (62) 99203-8987</p>
+  <div class="rodape" style="left:24mm;right:24mm"><span class="rodape-marca">Guilda da Fonte · Meditações Guiadas · Box Completa</span><span class="rodape-num">7</span></div>
+</div>
+
+</body>
+</html>

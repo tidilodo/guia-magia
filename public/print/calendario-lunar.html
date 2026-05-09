@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Calendário Lunar — 3 Meses de Prática | Guilda da Fonte</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+:root {
+  --preto:#0a0608;--medio:#1a1015;--caixa:#1e1519;--borda:#2e2028;
+  --dourado:#c9913a;--dourado2:#e8b96a;--creme:#f5ede0;--texto:#d4c4b0;--suave:#8a7a6a;
+  --elem:#c9913a;--elem2:#e8b96a;
+  --lua-nova:#9b59b6;--lua-cheia:#f1c40f;--lua-cresc:#27ae60;--lua-ming:#e67e22;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#2a2a2a;font-family:'EB Garamond',Georgia,serif;color:var(--texto);}
+.pagina{width:210mm;min-height:297mm;background:var(--preto);margin:0 auto 24px;padding:20mm 18mm 20mm 22mm;position:relative;border-left:3px solid var(--elem);box-shadow:0 4px 32px rgba(0,0,0,0.5);page-break-after:always;}
+.pagina:last-child{page-break-after:auto;}
+.capa{border-left:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(160deg,#1a1205 0%,#0a0608 60%);padding:24mm 18mm;}
+.capa::before{content:'';position:absolute;inset:0;border:2px solid rgba(201,145,58,0.2);margin:12mm;pointer-events:none;}
+.capa-ornamento{font-size:11pt;letter-spacing:12px;color:var(--elem);margin-bottom:20mm;opacity:0.6;}
+.capa-simbolo{font-size:60pt;margin-bottom:8mm;line-height:1;}
+.capa-badge{font-family:'Cinzel',serif;font-size:8pt;letter-spacing:4px;text-transform:uppercase;color:var(--elem);background:rgba(201,145,58,0.1);border:1px solid rgba(201,145,58,0.3);padding:4px 16px;border-radius:20px;margin-bottom:8mm;}
+.capa-titulo{font-family:'Cinzel Decorative',serif;font-size:26pt;font-weight:700;color:var(--creme);line-height:1.2;margin-bottom:4mm;}
+.capa-sub{font-family:'Cinzel Decorative',serif;font-size:13pt;font-weight:400;color:var(--elem2);margin-bottom:16mm;}
+.capa-divider{width:60mm;height:1px;background:linear-gradient(90deg,transparent,var(--elem),transparent);margin:0 auto 16mm;}
+.capa-serie{font-family:'Cinzel',serif;font-size:10pt;letter-spacing:3px;text-transform:uppercase;color:var(--suave);margin-bottom:4mm;}
+.capa-marca{font-family:'Cinzel Decorative',serif;font-size:13pt;color:var(--dourado2);}
+.capa-rodape{position:absolute;bottom:18mm;left:0;right:0;text-align:center;font-family:'Cinzel',serif;font-size:9pt;letter-spacing:3px;color:var(--suave);text-transform:uppercase;}
+.cab{display:flex;justify-content:space-between;align-items:center;margin-bottom:10mm;padding-bottom:3mm;border-bottom:1px solid var(--borda);}
+.cab-marca{font-family:'Cinzel',serif;font-size:9pt;letter-spacing:3px;text-transform:uppercase;color:var(--suave);}
+.cab-elem{font-family:'Cinzel',serif;font-size:9pt;letter-spacing:2px;color:var(--elem);text-transform:uppercase;}
+h1{font-family:'Cinzel Decorative',serif;font-size:22pt;font-weight:700;color:var(--creme);line-height:1.3;margin-bottom:6mm;margin-top:8mm;}
+h2{font-family:'Cinzel Decorative',serif;font-size:16pt;font-weight:400;color:var(--elem2);line-height:1.4;margin-bottom:5mm;margin-top:8mm;padding-bottom:2mm;border-bottom:1px solid rgba(201,145,58,0.2);}
+h3{font-family:'Cinzel',serif;font-size:12pt;font-weight:600;color:var(--elem);margin-bottom:3mm;margin-top:6mm;letter-spacing:1px;}
+p{font-size:13pt;line-height:1.85;margin-bottom:4mm;color:var(--texto);}
+strong{color:var(--creme);font-weight:500;}
+em{color:var(--dourado2);font-style:italic;}
+ul,ol{padding-left:6mm;margin-bottom:4mm;}
+li{font-size:13pt;line-height:1.8;margin-bottom:2mm;color:var(--texto);}
+.citacao{background:var(--caixa);border-left:3px solid var(--elem);padding:5mm 6mm;margin:5mm 0;border-radius:2px;font-style:italic;font-size:12.5pt;color:var(--dourado2);line-height:1.8;}
+.caixa-destaque{background:var(--caixa);border:1px solid var(--borda);border-top:2px solid var(--elem);padding:5mm 6mm;margin:5mm 0;border-radius:2px;}
+.divisor{text-align:center;color:var(--elem);font-size:10pt;letter-spacing:8px;margin:6mm 0;opacity:0.5;}
+
+/* Tabela lunar */
+.tabela-lunar{width:100%;border-collapse:collapse;margin:6mm 0;font-size:11pt;}
+.tabela-lunar th{background:rgba(201,145,58,0.1);color:var(--dourado2);font-family:'Cinzel',serif;font-size:9pt;letter-spacing:1px;text-transform:uppercase;padding:6px 10px;border:1px solid var(--borda);}
+.tabela-lunar td{padding:7px 10px;border:1px solid var(--borda);color:var(--texto);font-size:11pt;}
+.tabela-lunar tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+/* Cards de fase */
+.fase{border-radius:8px;padding:5mm 6mm;margin:4mm 0;border:1px solid;}
+.fase-nova{border-color:rgba(155,89,182,0.3);background:rgba(155,89,182,0.05);}
+.fase-cresc{border-color:rgba(39,174,96,0.3);background:rgba(39,174,96,0.05);}
+.fase-cheia{border-color:rgba(241,196,15,0.3);background:rgba(241,196,15,0.05);}
+.fase-ming{border-color:rgba(230,126,22,0.3);background:rgba(230,126,22,0.05);}
+.fase-header{font-family:'Cinzel',serif;font-size:10pt;font-weight:600;margin-bottom:3mm;display:flex;align-items:center;gap:8px;}
+.fase-nova .fase-header{color:#9b59b6;}
+.fase-cresc .fase-header{color:#27ae60;}
+.fase-cheia .fase-header{color:#f1c40f;}
+.fase-ming .fase-header{color:#e67e22;}
+.fase-ritual{font-size:12pt;line-height:1.8;color:var(--texto);margin-bottom:2mm;}
+.fase-afirmacao{font-size:11pt;color:var(--dourado2);font-style:italic;margin-top:2mm;}
+.mes-intro{background:var(--caixa);border:1px solid var(--borda);border-top:3px solid var(--elem);padding:5mm 6mm;border-radius:4px;margin:5mm 0;}
+.mes-intro-titulo{font-family:'Cinzel Decorative',serif;font-size:13pt;color:var(--creme);margin-bottom:3mm;}
+.mes-extras{display:flex;gap:6mm;margin-top:4mm;flex-wrap:wrap;}
+.mes-extra-item{font-size:11pt;color:var(--suave);}
+.mes-extra-item strong{color:var(--dourado2);}
+.pergunta-mensal{background:rgba(201,145,58,0.05);border:1px solid rgba(201,145,58,0.2);border-radius:8px;padding:5mm 6mm;margin-top:5mm;}
+.pergunta-mensal p{font-size:12pt;color:var(--dourado2);font-style:italic;margin:0;}
+.pergunta-mensal::before{content:'✦ Pergunta do Mês';display:block;font-family:'Cinzel',serif;font-size:8pt;letter-spacing:3px;text-transform:uppercase;color:var(--dourado);margin-bottom:3mm;}
+.pagina-enc{border-left:none;background:linear-gradient(160deg,#1a1205 0%,#0a0608 60%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24mm;}
+.pagina-enc::before{content:'';position:absolute;inset:12mm;border:1px solid rgba(201,145,58,0.15);pointer-events:none;}
+.enc-simbolo{font-size:44pt;margin-bottom:8mm;}
+.enc-titulo{font-family:'Cinzel Decorative',serif;font-size:18pt;color:var(--creme);font-weight:400;margin-bottom:6mm;line-height:1.4;}
+.enc-texto{font-size:13pt;color:var(--texto);line-height:1.85;max-width:130mm;margin-bottom:10mm;}
+.enc-divider{width:40mm;height:1px;background:linear-gradient(90deg,transparent,var(--elem),transparent);margin:0 auto 10mm;}
+.enc-marca{font-family:'Cinzel Decorative',serif;font-size:13pt;color:var(--dourado2);margin-bottom:4mm;}
+.enc-wpp{font-family:'Cinzel',serif;font-size:10pt;color:var(--suave);letter-spacing:1px;}
+.rodape{position:absolute;bottom:10mm;left:22mm;right:18mm;display:flex;justify-content:space-between;align-items:center;}
+.rodape-marca{font-family:'Cinzel',serif;font-size:8pt;letter-spacing:2px;color:var(--suave);text-transform:uppercase;}
+.rodape-num{font-family:'Cinzel',serif;font-size:8pt;color:var(--elem);}
+@media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;}
+  body{background:none;}
+  .pagina{margin:0;box-shadow:none;}
+  .btn-imprimir{display:none;}
+}
+.btn-imprimir{position:fixed;top:20px;right:20px;background:var(--dourado);color:#000;border:none;padding:12px 24px;border-radius:4px;cursor:pointer;font-family:sans-serif;font-size:14px;font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,0.4);z-index:999;}
+</style>
+</head>
+<body>
+<button class="btn-imprimir" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+
+<!-- CAPA -->
+<div class="pagina capa">
+  <p class="capa-ornamento">◆ &nbsp; ◆ &nbsp; ◆</p>
+  <div class="capa-simbolo">🌙</div>
+  <p class="capa-badge">✦ Bônus Exclusivo — Box Completa</p>
+  <h1 class="capa-titulo">Calendário Lunar</h1>
+  <p class="capa-sub">3 Meses de Prática</p>
+  <div class="capa-divider"></div>
+  <p class="capa-serie">Junho · Julho · Agosto 2026</p>
+  <p class="capa-marca">Guilda da Fonte</p>
+  <p class="capa-rodape">Guia de Magia Atual · Box dos 4 Elementos</p>
+</div>
+
+<!-- INTRODUÇÃO + TABELA -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌙 Calendário Lunar</span></div>
+  <h2>Como Usar Este Calendário</h2>
+  <p>A Lua não manda em você. Ela conversa com você. Cada fase é um convite — não uma obrigação. Você não precisa fazer todos os rituais ou lembrar de cada afirmação. O que importa é que você apareça para si mesma, de tempos em tempos, com intenção.</p>
+  <ul>
+    <li>Deixe o calendário em algum lugar visível — na cabeceira, na mesa, colado na geladeira.</li>
+    <li>No início de cada mês, leia a introdução e perceba se o tema ressoa com o que você está vivendo.</li>
+    <li>Em cada fase lunar, reserve de 10 a 20 minutos. Um cantinho limpo, uma vela, seu caderno e você já é suficiente.</li>
+    <li>Se pular fases, retome sem culpa. A Lua não guarda rancor.</li>
+  </ul>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h2>Fases Lunares — Junho, Julho e Agosto 2026</h2>
+  <table class="tabela-lunar">
+    <thead>
+      <tr>
+        <th>Mês</th>
+        <th>🌑 Lua Nova</th>
+        <th>🌓 Lua Crescente</th>
+        <th>🌕 Lua Cheia</th>
+        <th>🌗 Lua Minguante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong style="color:var(--dourado2)">Junho 2026</strong></td><td>17 jun</td><td>25 jun</td><td>1 jul*</td><td>9 jun</td></tr>
+      <tr><td><strong style="color:var(--dourado2)">Julho 2026</strong></td><td>17 jul</td><td>24 jul</td><td>31 jul</td><td>8 jul</td></tr>
+      <tr><td><strong style="color:var(--dourado2)">Agosto 2026</strong></td><td>15 ago</td><td>23 ago</td><td>29 ago</td><td>6 ago</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:10pt;color:var(--suave)">* Datas aproximadas. Use um app de fases lunares para ajustes precisos ao seu horário local.</p>
+  <div class="divisor">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <h3>Legenda das Fases</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4mm">
+    <div class="fase fase-nova"><p style="margin:0;font-size:12pt"><strong style="color:#9b59b6">🌑 Lua Nova</strong> — Plantar intenções. Momento de semear em silêncio o que quer ver crescer.</p></div>
+    <div class="fase fase-cresc"><p style="margin:0;font-size:12pt"><strong style="color:#27ae60">🌓 Lua Crescente</strong> — Nutrir e agir. Pequenos passos em direção ao que foi plantado.</p></div>
+    <div class="fase fase-cheia"><p style="margin:0;font-size:12pt"><strong style="color:#f1c40f">🌕 Lua Cheia</strong> — Celebrar e colher. Máxima energia, gratidão pelo que cresceu.</p></div>
+    <div class="fase fase-ming"><p style="margin:0;font-size:12pt"><strong style="color:#e67e22">🌗 Lua Minguante</strong> — Liberar e encerrar. Soltar o que não serve mais.</p></div>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Calendário Lunar</span><span class="rodape-num">2</span></div>
+</div>
+
+<!-- JUNHO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌙 Junho 2026</span></div>
+  <div class="mes-intro">
+    <p class="mes-intro-titulo">Junho 2026 — A Lua de Gêmeos · O Mês da Voz</p>
+    <p style="font-size:12pt;margin-bottom:3mm">Junho chega com ar nas velas. É um mês excelente para iniciar conversas que você adiou — especialmente as conversas internas.</p>
+    <p style="font-size:11pt;color:var(--suave);margin:0"><strong style="color:var(--dourado2)">Tema:</strong> O que eu quero, de verdade, dizer — para mim e para o mundo?</p>
+    <div class="mes-extras">
+      <span class="mes-extra-item">🔮 <strong>Cristal:</strong> Citrino (ou quartzo)</span>
+      <span class="mes-extra-item">🌿 <strong>Erva:</strong> Hortelã</span>
+    </div>
+  </div>
+
+  <div class="fase fase-ming">
+    <div class="fase-header">🌗 Lua Minguante — 9 de junho · Elemento: Ar</div>
+    <p class="fase-ritual"><strong>Ritual: A Lista que Vai Embora (10 min)</strong> — Acenda vela branca. Escreva 3-5 coisas para liberar. Leia em voz alta: <em>"Eu te libero com amor."</em> Rasgue e descarte fora de casa.</p>
+    <p class="fase-afirmacao">"Eu solto o que não me serve mais. Minha leveza é um ato de coragem."</p>
+  </div>
+
+  <div class="fase fase-nova">
+    <div class="fase-header">🌑 Lua Nova — 17 de junho ✦ · Elemento: Ar</div>
+    <p class="fase-ritual"><strong>Ritual: O Mapa de Intenções (15 min)</strong> — Acenda vela branca ou amarela. Escreva 3-7 intenções no presente. Dobre em direção a você. Guarde até a lua cheia.</p>
+    <p class="fase-afirmacao">"Minhas intenções são sementes reais. Planto com fé e rego com ação."</p>
+  </div>
+
+  <div class="fase fase-cresc">
+    <div class="fase-header">🌓 Lua Crescente — 25 de junho · Elemento: Fogo</div>
+    <p class="fase-ritual"><strong>Ritual: A Vela da Ação (10 min)</strong> — Releia intenções. Escolha uma. Acenda vela laranja. Escreva um passo concreto para esta semana.</p>
+    <p class="fase-afirmacao">"Cada pequeno passo é um gesto de confiança no meu próprio poder."</p>
+  </div>
+
+  <div class="fase fase-cheia">
+    <div class="fase-header">🌕 Lua Cheia — 1 de julho ✦ · Elemento: Água</div>
+    <p class="fase-ritual"><strong>Ritual: O Banho da Lua Cheia (20 min)</strong> — Banho com sal grosso + lavanda. Vela acesa, luz apagada. Pergunte: <em>"O que este ciclo me mostrou?"</em></p>
+    <p class="fase-afirmacao">"Eu reconheço minha própria luz. Sou grata por tudo que cresceu."</p>
+  </div>
+
+  <div class="pergunta-mensal">
+    <p>"Qual é a verdade sobre mim que eu ainda não me permiti dizer em voz alta?"</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Calendário Lunar</span><span class="rodape-num">3</span></div>
+</div>
+
+<!-- JULHO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌙 Julho 2026</span></div>
+  <div class="mes-intro">
+    <p class="mes-intro-titulo">Julho 2026 — A Lua de Câncer · O Mês do Lar Interior</p>
+    <p style="font-size:12pt;margin-bottom:3mm">Julho é um mês que pede profundidade. A lua está em seu domínio natural — você pode sentir mais, precisar de mais acolhimento. Não resista.</p>
+    <p style="font-size:11pt;color:var(--suave);margin:0"><strong style="color:var(--dourado2)">Tema:</strong> Onde e com quem me sinto verdadeiramente em casa?</p>
+    <div class="mes-extras">
+      <span class="mes-extra-item">🔮 <strong>Cristal:</strong> Pedra da Lua ou Selenita</span>
+      <span class="mes-extra-item">🌿 <strong>Erva:</strong> Camomila</span>
+    </div>
+  </div>
+
+  <div class="fase fase-ming">
+    <div class="fase-header">🌗 Lua Minguante — 8 de julho · Elemento: Água</div>
+    <p class="fase-ritual"><strong>Ritual: A Tigela d'Água (10 min)</strong> — Mãos na tigela com água fria. Vela azul. Diga: <em>"Eu devolvo ao fluxo o que não é meu."</em> Jogue a água em uma planta.</p>
+    <p class="fase-afirmacao">"Sentir é minha força. E eu posso soltar o que não me pertence."</p>
+  </div>
+
+  <div class="fase fase-nova">
+    <div class="fase-header">🌑 Lua Nova — 17 de julho ✦ · Elemento: Água</div>
+    <p class="fase-ritual"><strong>Ritual: A Carta para Si Mesma (15 min)</strong> — Vela branca + flor. Escreva: <em>"Querida [nome],"</em> dizendo o que ela precisa ouvir. Feche com intenção clara.</p>
+    <p class="fase-afirmacao">"Eu sou meu próprio lar. Me cuido como cuido de quem amo."</p>
+  </div>
+
+  <div class="fase fase-cresc">
+    <div class="fase-header">🌓 Lua Crescente — 24 de julho · Elemento: Terra</div>
+    <p class="fase-ritual"><strong>Ritual: O Gesto de Amor Próprio (10 min)</strong> — Escreva 3 gestos de autocuidado para a semana. Escolha um. Acenda vela rosa. Faça nas próximas 24h.</p>
+    <p class="fase-afirmacao">"Minhas necessidades importam. Agir por mim mesma é sagrado."</p>
+  </div>
+
+  <div class="fase fase-cheia">
+    <div class="fase-header">🌕 Lua Cheia — 31 de julho ✦ · Elemento: Fogo</div>
+    <p class="fase-ritual"><strong>Ritual: A Mesa de Gratidão (15 min)</strong> — Monte pequena mesa com itens de gratidão. Liste 10 coisas gratas por <strong>você mesma</strong>. Leia em voz alta. Mão no coração por 3 min.</p>
+    <p class="fase-afirmacao">"Sou grata por quem sou. Minha jornada tem valor."</p>
+  </div>
+
+  <div class="pergunta-mensal">
+    <p>"Quando foi a última vez que me senti verdadeiramente acolhida? Como criar isso para mim mesma?"</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Calendário Lunar</span><span class="rodape-num">4</span></div>
+</div>
+
+<!-- AGOSTO -->
+<div class="pagina">
+  <div class="cab"><span class="cab-marca">Guilda da Fonte</span><span class="cab-elem">🌙 Agosto 2026</span></div>
+  <div class="mes-intro">
+    <p class="mes-intro-titulo">Agosto 2026 — A Lua de Leão · O Mês da Chama Própria</p>
+    <p style="font-size:12pt;margin-bottom:3mm">Agosto brilha. O universo te convida a ser vista. Não é arrogância — é autenticidade. Este mês, pare de se esconder.</p>
+    <p style="font-size:11pt;color:var(--suave);margin:0"><strong style="color:var(--dourado2)">Tema:</strong> O que quero expressar — e o que tem me impedido de aparecer?</p>
+    <div class="mes-extras">
+      <span class="mes-extra-item">🔮 <strong>Cristal:</strong> Olho de Tigre</span>
+      <span class="mes-extra-item">🌿 <strong>Erva:</strong> Alecrim</span>
+    </div>
+  </div>
+
+  <div class="fase fase-ming">
+    <div class="fase-header">🌗 Lua Minguante — 6 de agosto · Elemento: Fogo</div>
+    <p class="fase-ritual"><strong>Ritual: A Queima do Crítico Interno (10 min)</strong> — Vela vermelha. Escreva crenças limitantes. Diga: <em>"Eu escolho não acreditar mais em você."</em> Rasgue. Escreva a versão contrária.</p>
+    <p class="fase-afirmacao">"Eu me liberto das vozes que me diminuem. Minha expressão é necessária."</p>
+  </div>
+
+  <div class="fase fase-nova">
+    <div class="fase-header">🌑 Lua Nova — 15 de agosto ✦ · Elemento: Fogo</div>
+    <p class="fase-ritual"><strong>Ritual: O Altar da Expressão (20 min)</strong> — Monte altar com foto sua + objeto que representa o que quer criar. Fique em <strong>pé</strong> (Leão quer postura!). Leia intenção em voz alta.</p>
+    <p class="fase-afirmacao">"Eu me permito ser vista. Minha singularidade é um presente."</p>
+  </div>
+
+  <div class="fase fase-cresc">
+    <div class="fase-header">🌓 Lua Crescente — 23 de agosto · Elemento: Ar</div>
+    <p class="fase-ritual"><strong>Ritual: O Primeiro Passo Criativo (10 min)</strong> — Escreva a coisa criativa que adiou. Quebre em 3 passos. Faça o menor passo <strong>agora</strong>.</p>
+    <p class="fase-afirmacao">"A perfeição é inimiga da minha criação. Eu começo agora."</p>
+  </div>
+
+  <div class="fase fase-cheia">
+    <div class="fase-header">🌕 Lua Cheia — 29 de agosto ✦ · Elemento: Fogo + Terra</div>
+    <p class="fase-ritual"><strong>Ritual: A Dança da Gratidão (20 min)</strong> — Música que te faz sentir poderosa. Dance 5 min sem julgamento. Sente no chão. Escreva: <em>"Este mês eu me permiti..."</em></p>
+    <p class="fase-afirmacao">"Eu danço entre quem sou e quem estou me tornando. Sou grata por ambas."</p>
+  </div>
+
+  <div class="pergunta-mensal">
+    <p>"Se eu tivesse certeza de que não seria julgada, o que eu faria diferente?"</p>
+  </div>
+  <div class="rodape"><span class="rodape-marca">Guilda da Fonte · Calendário Lunar</span><span class="rodape-num">5</span></div>
+</div>
+
+<!-- ENCERRAMENTO -->
+<div class="pagina pagina-enc">
+  <div class="enc-simbolo">🌙</div>
+  <h2 class="enc-titulo" style="font-family:'Cinzel Decorative',serif;font-size:18pt;color:var(--creme);font-weight:400;margin-bottom:6mm">Que estes três meses sejam seus.</h2>
+  <p class="enc-texto">A Lua sempre esteve conversando com você. Agora você sabe como ouvir.</p>
+  <p style="font-size:12pt;color:var(--dourado2);font-style:italic;margin-bottom:12mm;max-width:120mm;text-align:center"><em>"Cada fase é um convite. Cada ritual é uma conversa. Cada intenção é uma semente. E você — você é o jardim."</em></p>
+  <div class="enc-divider"></div>
+  <p class="enc-marca">Guilda da Fonte</p>
+  <p class="enc-wpp">Dúvidas? WhatsApp (62) 99203-8987</p>
+  <div class="rodape" style="left:24mm;right:24mm"><span class="rodape-marca">Guilda da Fonte · Calendário Lunar · Box Completa</span><span class="rodape-num">6</span></div>
+</div>
+
+</body>
+</html>
