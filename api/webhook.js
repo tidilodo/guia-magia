@@ -120,7 +120,7 @@ async function enviar(email, assunto, html) {
   });
 }
 
-async function enviarBasico(email, nome) {
+export async function enviarBasico(email, nome) {
   const primeiroNome = nome.split(' ')[0] || 'Praticante';
   const pdfs = PDFS_BASICO(appUrl());
   const html = emailBase(
@@ -133,7 +133,7 @@ async function enviarBasico(email, nome) {
   await enviar(email, '✦ Sua Box dos 4 Elementos — Guilda da Fonte', html);
 }
 
-async function enviarCompleto(email, nome) {
+export async function enviarCompleto(email, nome) {
   const primeiroNome = nome.split(' ')[0] || 'Praticante';
   const pdfs = PDFS_COMPLETO(appUrl());
   const secaoExtra = `
