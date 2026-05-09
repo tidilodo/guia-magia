@@ -150,6 +150,7 @@ li strong { color: var(--elem2); }
 
 /* ── PRINT ── */
 @media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
   body { background: none; }
   .pagina { margin: 0; box-shadow: none; }
   .btn-imprimir { display: none; }
